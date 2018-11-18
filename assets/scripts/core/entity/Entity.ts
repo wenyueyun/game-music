@@ -26,11 +26,11 @@ export default class Entity extends cc.Component implements IEntity, IDispose {
     
     public setVO(vo: EntityVO) {
         this.vo = vo;
-        this.loadModel();
+        this.loadModel(this.vo.getModel());
     }
 
-    protected loadModel() {
-        cc.loader.loadRes(PathConst.PLAYER+"Girl", (err, prefab) => {
+    protected loadModel(path:string) {
+        cc.loader.loadRes(path, (err, prefab) => {
             if (err) {
                 cc.error(err.message || err);
             }

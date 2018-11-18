@@ -1,6 +1,6 @@
 export default class GameConst {
     
-    public static isWX:Boolean = true;
+    public static isWX:Boolean = false;
 
     public static GAME_START: string = 'game_start';
 

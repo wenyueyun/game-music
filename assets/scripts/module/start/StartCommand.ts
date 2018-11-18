@@ -42,6 +42,7 @@ export default class StartCommand extends MacroCommand implements ICommand {
                             }
                             else {
                                 this.sendNotification(MainConst.MAIN_MEDIATOR_OPEN);
+                                this.sendNotification(MainConst.MAIN_MEDIATOR_LOGIN,false);
                             }
                         },
                         (progress) => {

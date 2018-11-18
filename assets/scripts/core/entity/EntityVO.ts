@@ -1,6 +1,13 @@
 export default class EntityVO {
-    private bid: number;
+    
+    protected bid: number;
+    
     public constructor() {
 
+    }
+
+    public getModel():string
+    {
+        return "";
     }
 }

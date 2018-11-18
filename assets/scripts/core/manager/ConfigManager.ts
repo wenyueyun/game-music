@@ -1,10 +1,9 @@
 import MusicConfig from "../config/AudioConfig";
 import LevelConfig from "../config/LevelConfig";
-import TrackConfig from "../config/TrackConfig";
-import NoteConfig from "../config/NoteConfig";
 import MonsterConfig from "../config/MonsterConfig";
 import AudioConfig from "../config/AudioConfig";
-import ResourceManager from "./ResourceManager";
+import SkillConfig from "../config/SkillConfig";
+import PlayerConfig from "../config/PlayerConfig";
 
 export default class ConfigManager {
     private static instance: ConfigManager = null;
@@ -18,47 +17,22 @@ export default class ConfigManager {
     private musicArr: Array<AudioConfig>;
     private levelArr: Array<LevelConfig>;
     private monsterArr: Array<MonsterConfig>;
+    private skillArr: Array<SkillConfig>;
+    private playerArr: Array<PlayerConfig>;
 
 
     public constructor() {
         this.levelArr = new Array<LevelConfig>();
         this.musicArr = new Array<AudioConfig>();
         this.monsterArr = new Array<MonsterConfig>();
+        this.skillArr = new Array<SkillConfig>();
+        this.playerArr = new Array<PlayerConfig>();
     }
 
-    //加载配置表
-    // public loadConfig(loadComplete:Function): void {
-        // cc.loader.loadResDir('json', 
-        // (completedCount, totalCount, item) => {
-        //     // cc.log("load---------->completedCount: %s   totalCount: %s    item: %s", completedCount, totalCount, item.name);
-        //     progress(completedCount,totalCount);
-        // },
-        // (err, objects, urls) => {
-        //     for (let index = 0; index < objects.length; index++) {
-        //         this.readJson(objects[index]);
-        //     }
-           
-        // });
-
-        // ResourceManager.getInstance().loadResDir('json',(objects: any[])=>
-        // {
-        //     for (let index = 0; index < objects.length; index++) {
-        //         this.readJson(objects[index]);
-        //     }
-
-        //     if(loadComplete)
-        //     {
-        //         loadComplete();
-        //     }
-        // },true);
-    // }
-
-    public loadConfig(resource:any[])
-    {
+    public loadConfig(resource: any[]) {
         for (let index = 0; index < resource.length; index++) {
             const element = resource[index];
-            if(element instanceof cc.JsonAsset)
-            {
+            if (element instanceof cc.JsonAsset) {
                 this.readJson(element);
             }
         }
@@ -66,12 +40,18 @@ export default class ConfigManager {
 
     //解析配置表
     private readJson(object: any) {
-        cc.log("解析配置表------------>"+object.name);
+        cc.log("解析配置表------------>" + object.name);
         if (object.name.includes("Level")) {
             this.readLevel(object.json);
         }
+        else if (object.name.includes("Player")) {
+            this.readPlayer(object.json);
+        }
         else if (object.name.includes("Monster")) {
-             this.readMonster(object.json);
+            this.readMonster(object.json);
+        }
+        else if (object.name.includes("Skill")) {
+            this.readSkill(object.json);
         }
         else if (object.name.includes("Audio")) {
             this.readMusic(object.json);
@@ -87,12 +67,30 @@ export default class ConfigManager {
         }
     }
 
+    //解析角色json配置表
+    private readPlayer(json: any) {
+        var players = json.Player;
+        for (let index = 0; index < players.length; index++) {
+            const element = players[index];
+            this.playerArr.push(new PlayerConfig(element));
+        }
+    }
+
     //解析怪物json配置表
     private readMonster(json: any) {
         var monsters = json.Monster;
         for (let index = 0; index < monsters.length; index++) {
             const element = monsters[index];
             this.monsterArr.push(new MonsterConfig(element));
+        }
+    }
+
+    //解析怪技能son配置表
+    private readSkill(json: any) {
+        var skills = json.Skill;
+        for (let index = 0; index < skills.length; index++) {
+            const element = skills[index];
+            this.skillArr.push(new SkillConfig(element));
         }
     }
 
@@ -106,7 +104,7 @@ export default class ConfigManager {
         for (let index = 0; index < this.musicArr.length; index++) {
             var music: MusicConfig = this.musicArr[index];
             if (music.name == musicName) {
-                return  JSON.parse(JSON.stringify(music));;
+                return JSON.parse(JSON.stringify(music));;
             }
         }
         return null;
@@ -123,12 +121,34 @@ export default class ConfigManager {
         return null;
     }
 
-     //根据id获取怪物配置
-     public getMonster(monID: number): LevelConfig {
+    //根据id获取怪物配置
+    public getMonster(monID: number): MonsterConfig {
         for (let index = 0; index < this.monsterArr.length; index++) {
             var mon: MonsterConfig = this.monsterArr[index];
             if (mon.id == monID) {
                 return JSON.parse(JSON.stringify(mon));
+            }
+        }
+        return null;
+    }
+
+    //根据id获取角色配置
+    public getPlayer(pID: number): PlayerConfig {
+        for (let index = 0; index < this.playerArr.length; index++) {
+            var player: PlayerConfig = this.playerArr[index];
+            if (player.id == pID) {
+                return JSON.parse(JSON.stringify(player));
+            }
+        }
+        return null;
+    }
+
+    //根据id获取技能配置
+    public getSkill(sID: number): SkillConfig {
+        for (let index = 0; index < this.skillArr.length; index++) {
+            var skill: SkillConfig = this.skillArr[index];
+            if (skill.id == sID) {
+                return JSON.parse(JSON.stringify(skill));
             }
         }
         return null;

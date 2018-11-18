@@ -20,6 +20,7 @@ import OverConst from "../Over/OverConst";
 import PauseConst from "../pause/PauseConst";
 import MainConst from "../main/MainConst";
 import Game from "../../Game";
+import PlayerVO from "../../core/entity/PlayerVO";
 
 export default class BattleMediator extends Mediator implements IMediator {
     public static NAME: string = "BattleMediator";
@@ -183,7 +184,7 @@ export default class BattleMediator extends Mediator implements IMediator {
         this.player.setParent(this.getViewComponent().play);
         this.player.setScale(new cc.Vec2(0.5, 0.5));
         this.player.setPos(new cc.Vec2(-520, -210));
-        this.player.setVO(null);
+        this.player.setVO(new PlayerVO(1));
 
         cc.log("go -------->");
         this.isPlay = true;
