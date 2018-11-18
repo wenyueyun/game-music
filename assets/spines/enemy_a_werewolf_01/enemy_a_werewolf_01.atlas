@@ -1,0 +1,146 @@
+
+enemy_a_werewolf_01.png
+size: 160,520
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+a1
+  rotate: false
+  xy: 92, 321
+  size: 68, 28
+  orig: 68, 28
+  offset: 0, 0
+  index: -1
+body
+  rotate: false
+  xy: 0, 367
+  size: 86, 153
+  orig: 86, 153
+  offset: 0, 0
+  index: -1
+ears_1
+  rotate: false
+  xy: 93, 192
+  size: 49, 73
+  orig: 49, 73
+  offset: 0, 0
+  index: -1
+ears_2
+  rotate: true
+  xy: 0, 0
+  size: 48, 66
+  orig: 48, 66
+  offset: 0, 0
+  index: -1
+eb
+  rotate: true
+  xy: 142, 213
+  size: 63, 11
+  orig: 63, 11
+  offset: 0, 0
+  index: -1
+eye
+  rotate: true
+  xy: 129, 87
+  size: 71, 26
+  orig: 71, 26
+  offset: 0, 0
+  index: -1
+foo12 xia
+  rotate: true
+  xy: 93, 158
+  size: 34, 63
+  orig: 34, 63
+  offset: 0, 0
+  index: -1
+foot1 xia
+  rotate: false
+  xy: 97, 93
+  size: 32, 65
+  orig: 32, 65
+  offset: 0, 0
+  index: -1
+foot_1
+  rotate: true
+  xy: 97, 53
+  size: 34, 54
+  orig: 34, 54
+  offset: 0, 0
+  index: -1
+foot_2_1
+  rotate: false
+  xy: 92, 265
+  size: 45, 56
+  orig: 45, 56
+  offset: 0, 0
+  index: -1
+hair_1
+  rotate: true
+  xy: 0, 150
+  size: 104, 93
+  orig: 104, 93
+  offset: 0, 0
+  index: -1
+hair_2
+  rotate: false
+  xy: 137, 276
+  size: 23, 45
+  orig: 23, 45
+  offset: 0, 0
+  index: -1
+hand_1_1
+  rotate: true
+  xy: 86, 467
+  size: 53, 74
+  orig: 53, 74
+  offset: 0, 0
+  index: -1
+hand_1_2
+  rotate: true
+  xy: 66, 2
+  size: 46, 35
+  orig: 46, 35
+  offset: 0, 0
+  index: -1
+hand_2_1
+  rotate: false
+  xy: 93, 349
+  size: 67, 69
+  orig: 67, 69
+  offset: 0, 0
+  index: -1
+hand_2_2
+  rotate: false
+  xy: 101, 18
+  size: 46, 35
+  orig: 46, 35
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 0, 48
+  size: 97, 102
+  orig: 97, 102
+  offset: 0, 0
+  index: -1
+mouth
+  rotate: true
+  xy: 147, 32
+  size: 21, 13
+  orig: 21, 13
+  offset: 0, 0
+  index: -1
+skirt
+  rotate: false
+  xy: 86, 418
+  size: 74, 49
+  orig: 74, 49
+  offset: 0, 0
+  index: -1
+z
+  rotate: true
+  xy: 0, 254
+  size: 113, 92
+  orig: 113, 92
+  offset: 0, 0
+  index: -1

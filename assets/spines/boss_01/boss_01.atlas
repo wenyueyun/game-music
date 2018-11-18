@@ -1,0 +1,160 @@
+
+boss_01.png
+size: 695,188
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+jiangshixinniang_0
+  rotate: false
+  xy: 492, 0
+  size: 26, 23
+  orig: 26, 23
+  offset: 0, 0
+  index: -1
+jiangshixinniang_1
+  rotate: false
+  xy: 287, 0
+  size: 45, 25
+  orig: 45, 25
+  offset: 0, 0
+  index: -1
+jiangshixinniang_10
+  rotate: false
+  xy: 287, 25
+  size: 67, 36
+  orig: 67, 36
+  offset: 0, 0
+  index: -1
+jiangshixinniang_11
+  rotate: true
+  xy: 405, 0
+  size: 30, 40
+  orig: 30, 40
+  offset: 0, 0
+  index: -1
+jiangshixinniang_12
+  rotate: true
+  xy: 354, 28
+  size: 33, 47
+  orig: 33, 47
+  offset: 0, 0
+  index: -1
+jiangshixinniang_13
+  rotate: false
+  xy: 657, 35
+  size: 38, 71
+  orig: 38, 71
+  offset: 0, 0
+  index: -1
+jiangshixinniang_14
+  rotate: true
+  xy: 518, 0
+  size: 24, 23
+  orig: 24, 23
+  offset: 0, 0
+  index: -1
+jiangshixinniang_15
+  rotate: false
+  xy: 201, 1
+  size: 27, 16
+  orig: 27, 16
+  offset: 0, 0
+  index: -1
+jiangshixinniang_16
+  rotate: false
+  xy: 445, 0
+  size: 47, 23
+  orig: 47, 23
+  offset: 0, 0
+  index: -1
+jiangshixinniang_17
+  rotate: true
+  xy: 508, 24
+  size: 28, 40
+  orig: 28, 40
+  offset: 0, 0
+  index: -1
+jiangshixinniang_18
+  rotate: true
+  xy: 354, 0
+  size: 28, 51
+  orig: 28, 51
+  offset: 0, 0
+  index: -1
+jiangshixinniang_19
+  rotate: true
+  xy: 201, 94
+  size: 94, 205
+  orig: 94, 205
+  offset: 0, 0
+  index: -1
+jiangshixinniang_2
+  rotate: false
+  xy: 657, 5
+  size: 28, 30
+  orig: 28, 30
+  offset: 0, 0
+  index: -1
+jiangshixinniang_20
+  rotate: true
+  xy: 406, 52
+  size: 136, 144
+  orig: 136, 144
+  offset: 0, 0
+  index: -1
+jiangshixinniang_21
+  rotate: true
+  xy: 0, 13
+  size: 175, 201
+  orig: 175, 201
+  offset: 0, 0
+  index: -1
+jiangshixinniang_3
+  rotate: false
+  xy: 401, 30
+  size: 50, 22
+  orig: 50, 22
+  offset: 0, 0
+  index: -1
+jiangshixinniang_4
+  rotate: false
+  xy: 287, 61
+  size: 106, 33
+  orig: 106, 33
+  offset: 0, 0
+  index: -1
+jiangshixinniang_5
+  rotate: false
+  xy: 550, 106
+  size: 132, 82
+  orig: 132, 82
+  offset: 0, 0
+  index: -1
+jiangshixinniang_6
+  rotate: true
+  xy: 682, 124
+  size: 64, 12
+  orig: 64, 12
+  offset: 0, 0
+  index: -1
+jiangshixinniang_7
+  rotate: false
+  xy: 451, 23
+  size: 57, 29
+  orig: 57, 29
+  offset: 0, 0
+  index: -1
+jiangshixinniang_8
+  rotate: false
+  xy: 201, 17
+  size: 86, 77
+  orig: 86, 77
+  offset: 0, 0
+  index: -1
+jiangshixinniang_9
+  rotate: false
+  xy: 550, 4
+  size: 107, 102
+  orig: 107, 102
+  offset: 0, 0
+  index: -1

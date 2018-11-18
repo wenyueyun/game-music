@@ -1,0 +1,53 @@
+{
+  "Monster": [
+    {
+      "id": "1001",
+      "name": "僵尸新娘",
+      "type": "1",
+      "atk": "10",
+      "model": "Boss_01"
+    },
+    {
+      "id": "2001",
+      "name": "蝙蝠",
+      "type": "2",
+      "atk": "5",
+      "model": "Bat_01"
+    },
+    {
+      "id": "2002",
+      "name": "幽灵",
+      "type": "2",
+      "atk": "5",
+      "model": "Ghost_01"
+    },
+    {
+      "id": "2003",
+      "name": "魔手",
+      "type": "2",
+      "atk": "5",
+      "model": "Hand_01"
+    },
+    {
+      "id": "2004",
+      "name": "骷髅",
+      "type": "2",
+      "atk": "5",
+      "model": "Skull_01"
+    },
+    {
+      "id": "2005",
+      "name": "狼人",
+      "type": "2",
+      "atk": "5",
+      "model": "Werewolf_01"
+    },
+    {
+      "id": "2006",
+      "name": "僵尸",
+      "type": "2",
+      "atk": "5",
+      "model": "Zombie_01"
+    }
+  ]
+}

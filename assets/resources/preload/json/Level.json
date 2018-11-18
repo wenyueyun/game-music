@@ -1,0 +1,22 @@
+{
+  "Level": [
+    {
+      "id": "1",
+      "name": "第一幕",
+      "map": "Map_01",
+      "music": "Audio_001"
+    },
+    {
+      "id": "2",
+      "name": "第二幕",
+      "map": "Map_02",
+      "music": "Audio_002"
+    },
+    {
+      "id": "3",
+      "name": "第三幕",
+      "map": "Map_01",
+      "music": "Audio_004"
+    }
+  ]
+}

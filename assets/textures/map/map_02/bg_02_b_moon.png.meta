@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "898d76fa-73ad-4f2c-a2c4-6b59031c3880",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "bg_02_b_moon": {
+      "ver": "1.0.3",
+      "uuid": "ff44d632-afb4-4965-9c79-7f2926999ac1",
+      "rawTextureUuid": "898d76fa-73ad-4f2c-a2c4-6b59031c3880",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 215,
+      "height": 215,
+      "rawWidth": 217,
+      "rawHeight": 217,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "befb1bff-42fc-405d-a0cd-6ee9e7cfc4af",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "bg_02_a_tomb": {
+      "ver": "1.0.3",
+      "uuid": "9c950734-d755-4ee5-b337-08a148da1d9b",
+      "rawTextureUuid": "befb1bff-42fc-405d-a0cd-6ee9e7cfc4af",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 366,
+      "height": 183,
+      "rawWidth": 368,
+      "rawHeight": 185,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

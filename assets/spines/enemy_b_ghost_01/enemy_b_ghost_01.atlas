@@ -1,0 +1,34 @@
+
+enemy_b_ghost_01.png
+size: 183,124
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+youling_0
+  rotate: true
+  xy: 124, 2
+  size: 55, 39
+  orig: 55, 39
+  offset: 0, 0
+  index: -1
+youling_1
+  rotate: false
+  xy: 167, 111
+  size: 16, 13
+  orig: 16, 13
+  offset: 0, 0
+  index: -1
+youling_2
+  rotate: true
+  xy: 124, 57
+  size: 67, 43
+  orig: 67, 43
+  offset: 0, 0
+  index: -1
+youling_3
+  rotate: false
+  xy: 0, 0
+  size: 124, 124
+  orig: 124, 124
+  offset: 0, 0
+  index: -1

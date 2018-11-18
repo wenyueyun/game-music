@@ -1,0 +1,69 @@
+
+enemy_a_hand_01.png
+size: 141,148
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+_0
+  rotate: true
+  xy: 71, 45
+  size: 103, 35
+  orig: 103, 35
+  offset: 0, 0
+  index: -1
+_1
+  rotate: true
+  xy: 0, 0
+  size: 31, 28
+  orig: 31, 28
+  offset: 0, 0
+  index: -1
+_2
+  rotate: true
+  xy: 28, 4
+  size: 27, 36
+  orig: 27, 36
+  offset: 0, 0
+  index: -1
+_3
+  rotate: false
+  xy: 71, 21
+  size: 30, 24
+  orig: 30, 24
+  offset: 0, 0
+  index: -1
+_4
+  rotate: true
+  xy: 106, 50
+  size: 24, 33
+  orig: 24, 33
+  offset: 0, 0
+  index: -1
+_5
+  rotate: false
+  xy: 106, 110
+  size: 33, 38
+  orig: 33, 38
+  offset: 0, 0
+  index: -1
+_6
+  rotate: false
+  xy: 106, 74
+  size: 35, 36
+  orig: 35, 36
+  offset: 0, 0
+  index: -1
+_7
+  rotate: true
+  xy: 106, 25
+  size: 25, 26
+  orig: 25, 26
+  offset: 0, 0
+  index: -1
+_8
+  rotate: false
+  xy: 0, 31
+  size: 71, 117
+  orig: 71, 117
+  offset: 0, 0
+  index: -1

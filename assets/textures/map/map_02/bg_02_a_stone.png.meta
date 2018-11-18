@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "df9715fc-0562-4a91-b34c-405169a5295b",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "bg_02_a_stone": {
+      "ver": "1.0.3",
+      "uuid": "db13f87f-bbbb-4558-9fcc-79712b625e54",
+      "rawTextureUuid": "df9715fc-0562-4a91-b34c-405169a5295b",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 1,
+      "trimY": 1,
+      "width": 168,
+      "height": 186,
+      "rawWidth": 170,
+      "rawHeight": 188,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

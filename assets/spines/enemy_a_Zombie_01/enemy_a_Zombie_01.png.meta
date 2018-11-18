@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "bfaef857-ec24-4b78-9c31-217c96e34d0f",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "enemy_a_Zombie_01": {
+      "ver": "1.0.3",
+      "uuid": "2642ab1b-ba1d-47f2-a411-dc34d45a63ba",
+      "rawTextureUuid": "bfaef857-ec24-4b78-9c31-217c96e34d0f",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 241,
+      "height": 267,
+      "rawWidth": 241,
+      "rawHeight": 267,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

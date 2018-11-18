@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "cdb24148-ae96-4ef5-b2b6-eb46f9085294",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "bg_02_a_hill": {
+      "ver": "1.0.3",
+      "uuid": "0a756553-823a-4217-bfb3-d97fc8e1f3c0",
+      "rawTextureUuid": "cdb24148-ae96-4ef5-b2b6-eb46f9085294",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 1,
+      "width": 1280,
+      "height": 295,
+      "rawWidth": 1280,
+      "rawHeight": 297,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

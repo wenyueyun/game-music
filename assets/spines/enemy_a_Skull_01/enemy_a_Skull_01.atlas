@@ -1,0 +1,111 @@
+
+enemy_a_Skull_01.png
+size: 168,116
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+kulou_0
+  rotate: false
+  xy: 0, 23
+  size: 95, 93
+  orig: 95, 93
+  offset: 0, 0
+  index: -1
+kulou_1
+  rotate: true
+  xy: 0, 0
+  size: 23, 37
+  orig: 23, 37
+  offset: 0, 0
+  index: -1
+kulou_10
+  rotate: false
+  xy: 146, 3
+  size: 13, 33
+  orig: 13, 33
+  offset: 0, 0
+  index: -1
+kulou_11
+  rotate: false
+  xy: 117, 2
+  size: 16, 28
+  orig: 16, 28
+  offset: 0, 0
+  index: -1
+kulou_12
+  rotate: false
+  xy: 126, 41
+  size: 14, 35
+  orig: 14, 35
+  offset: 0, 0
+  index: -1
+kulou_13
+  rotate: false
+  xy: 95, 76
+  size: 38, 40
+  orig: 38, 40
+  offset: 0, 0
+  index: -1
+kulou_14
+  rotate: true
+  xy: 95, 30
+  size: 46, 31
+  orig: 46, 31
+  offset: 0, 0
+  index: -1
+kulou_2
+  rotate: false
+  xy: 133, 92
+  size: 32, 24
+  orig: 32, 24
+  offset: 0, 0
+  index: -1
+kulou_3
+  rotate: true
+  xy: 74, 5
+  size: 18, 27
+  orig: 18, 27
+  offset: 0, 0
+  index: -1
+kulou_4
+  rotate: true
+  xy: 37, 0
+  size: 23, 37
+  orig: 23, 37
+  offset: 0, 0
+  index: -1
+kulou_5
+  rotate: false
+  xy: 140, 54
+  size: 26, 24
+  orig: 26, 24
+  offset: 0, 0
+  index: -1
+kulou_6
+  rotate: true
+  xy: 140, 36
+  size: 18, 26
+  orig: 18, 26
+  offset: 0, 0
+  index: -1
+kulou_7
+  rotate: false
+  xy: 133, 3
+  size: 13, 33
+  orig: 13, 33
+  offset: 0, 0
+  index: -1
+kulou_8
+  rotate: false
+  xy: 101, 2
+  size: 16, 28
+  orig: 16, 28
+  offset: 0, 0
+  index: -1
+kulou_9
+  rotate: true
+  xy: 133, 78
+  size: 14, 35
+  orig: 14, 35
+  offset: 0, 0
+  index: -1
