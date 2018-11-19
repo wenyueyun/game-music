@@ -21,11 +21,16 @@ import PauseConst from "../pause/PauseConst";
 import MainConst from "../main/MainConst";
 import Game from "../../Game";
 import PlayerVO from "../../core/entity/PlayerVO";
+import Monster from "../../core/entity/Monster";
+import MonsterVO from "../../core/entity/MonsterVO";
+import EntityEvent from "../../core/const/EntityEvent";
+import EntityVO from "../../core/entity/EntityVO";
 
 export default class BattleMediator extends Mediator implements IMediator {
     public static NAME: string = "BattleMediator";
     private curAudio: number = -1;
-    private noteArr: Array<NoteItem>;
+    // private noteArr: Array<NoteItem>;
+    private monsterArr: Array<Monster>;
     private musicConfig: MusicConfig;
     private levelConfig: LevelConfig;
     private defaultDis: number = 1200;
@@ -72,7 +77,8 @@ export default class BattleMediator extends Mediator implements IMediator {
     public constructor(viewComponent: any) {
         super(BattleMediator.NAME, viewComponent)
         this.proxy = <BattleProxy>(this.facade.retrieveProxy(BattleProxy.NAME));
-        this.noteArr = new Array<NoteItem>();
+        // this.noteArr = new Array<NoteItem>();
+        this.monsterArr = new Array<Monster>();
     }
 
     public listNotificationInterests(): string[] {
@@ -104,16 +110,23 @@ export default class BattleMediator extends Mediator implements IMediator {
                 cc.log("准备进入战斗");
                 this.isPlay = false;
                 this.curLev = data;
+                cc.log("this.curLev-----------"+this.curLev);
                 this.loadRes();
                 break;
             case BattleConst.BATTLE_MEDIATOR_CLOSE:
             case BattleConst.BATTLE_MEDIATOR_EXIT:
                 //退出
                 this.onClose();
-                for (let index = 0; index < this.noteArr.length; index++) {
-                    const element = this.noteArr[index];
-                    PoolManager.getInstance().putNode(PoolManager.NOTE_POOL, element.getNode());
+                // for (let index = 0; index < this.noteArr.length; index++) {
+                //     const element = this.noteArr[index];
+                //     PoolManager.getInstance().putNode(PoolManager.NOTE_POOL, element.getNode());
+                // }
+
+                for (let index = 0; index < this.monsterArr.length; index++) {
+                    this.monsterArr[index].destroy();
                 }
+                this.monsterArr = [];
+
                 this.removeEvent();
                 this.getViewComponent().close();
                 this.sendNotification(LevelConst.LEVEL_MEDIATOR_OPEN);
@@ -148,9 +161,15 @@ export default class BattleMediator extends Mediator implements IMediator {
             }
         }
 
+        for (let index = 0; index < this.resArr.length; index++) {
+            const element = this.resArr[index];
+            cc.log(element);
+        }
+
         this.sendNotification(LoadingConst.LOADING_MEDIATOR_OPEN);
         ResourceManager.getInstance().loadResArray(this.resArr,
             () => {
+                cc.log("预加载资源完成");
                 this.sendNotification(LoadingConst.LOADING_MEDIATOR_CLOSE);
                 this.addEvent();
                 this.getViewComponent().open();
@@ -177,14 +196,12 @@ export default class BattleMediator extends Mediator implements IMediator {
             this.sendNotification(OverConst.OVER_MEDIATOR_OPEN);
         });
 
-        this.getViewComponent().setLevName(this.levelConfig.name);
-
         //显示主角
         this.player = new Player();
         this.player.setParent(this.getViewComponent().play);
         this.player.setScale(new cc.Vec2(0.5, 0.5));
         this.player.setPos(new cc.Vec2(-520, -210));
-        this.player.setVO(new PlayerVO(1));
+        // this.player.setVO(new PlayerVO(2));
 
         cc.log("go -------->");
         this.isPlay = true;
@@ -198,8 +215,8 @@ export default class BattleMediator extends Mediator implements IMediator {
                     let audioTime = cc.audioEngine.getCurrentTime(this.curAudio);
                     this.getViewComponent().setMusicTime(audioTime);
                     this.updateNote(audioTime);
-                    for (let i = 0; i < this.noteArr.length; i++) {
-                        this.noteArr[i].update(audioTime, dt, this.speed);
+                    for (let i = 0; i < this.monsterArr.length; i++) {
+                        this.monsterArr[i].onUpdate(audioTime, dt, this.speed);
                     }
                 }
             }
@@ -234,20 +251,29 @@ export default class BattleMediator extends Mediator implements IMediator {
 
     private createNote(time: number, value: Array<NoteConfig>, track: string, posy: number) {
         for (let index = 0; index < value.length; index++) {
-            var noteVo: NoteConfig = value[index];
-            if ((noteVo.startTime - time * 1000) <= this.defaultTime) {
-                var node: cc.Node = PoolManager.getInstance().getNode(PoolManager.NOTE_POOL);
-                var noteItem: NoteItem = new NoteItem(track, node, this.getViewComponent().play, new cc.Vec2((noteVo.startTime - time * 1000) * this.speed - 400, posy), this.destroyNote.bind(this));
-                noteItem.setVO(noteVo);
-                if (noteVo.startTime == noteVo.endTime) {
-                    noteItem.setWidth(this.noteWidth);
-                }
-                else {
-                    noteItem.setWidth(this.noteWidth * (noteVo.endTime - noteVo.startTime) / (60 / this.musicConfig.bpm * 1000));
-                }
+            var note: NoteConfig = value[index];
+            if ((note.startTime - time * 1000) <= this.defaultTime) {
 
-                this.noteArr.push(noteItem);
+                var mon_vo: MonsterVO = new MonsterVO(parseInt(note.val));
+                var mon: Monster = new Monster();
+                mon.setParent(this.getViewComponent().play);
+                mon.setPos(new cc.Vec2((note.startTime - time * 1000) * this.speed - 400, posy));
+                mon.setNote(note);
+                mon.setVO(mon_vo);
+                this.monsterArr.push(mon);
                 value.splice(index, 1);
+                // var node: cc.Node = PoolManager.getInstance().getNode(PoolManager.NOTE_POOL);
+                // var noteItem: NoteItem = new NoteItem(track, node, this.getViewComponent().play, new cc.Vec2((noteVo.startTime - time * 1000) * this.speed - 400, posy), this.destroyNote.bind(this));
+                // noteItem.setVO(noteVo);
+                // if (noteVo.startTime == noteVo.endTime) {
+                //     noteItem.setWidth(this.noteWidth);
+                // }
+                // else {
+                //     noteItem.setWidth(this.noteWidth * (noteVo.endTime - noteVo.startTime) / (60 / this.musicConfig.bpm * 1000));
+                // }
+
+                // this.noteArr.push(noteItem);
+                // value.splice(index, 1);
             }
             else {
                 index++;
@@ -255,17 +281,20 @@ export default class BattleMediator extends Mediator implements IMediator {
         }
     }
 
-    private destroyNote(value: NoteItem) {
-        PoolManager.getInstance().putNode(PoolManager.NOTE_POOL, value.getNode());
+    private onEntityDie(value: EntityVO) {
+        // PoolManager.getInstance().putNode(PoolManager.NOTE_POOL, value.getNode());
 
-        for (let index = 0; index < this.noteArr.length; index++) {
-            const element = this.noteArr[index];
-            if (element == value) {
-                this.noteArr.splice(index, 1);
+        for (let index = 0; index < this.monsterArr.length; index++) {
+            const element = this.monsterArr[index];
+            if (element.getVO() == value) {
+                element.destroy();
+                this.monsterArr.splice(index, 1);
                 break;
             }
         }
     }
+
+
 
     private addEvent(): void {
         cc.systemEvent.on(BattleConst.BATTLE_VIEW_OPEN_SUCC, this.onOpenSucc, this);
@@ -278,6 +307,8 @@ export default class BattleMediator extends Mediator implements IMediator {
         cc.systemEvent.on(BattleConst.BATTLE_VIEW_TOUCH_RIGHT_END, this.onTouchRightEnd, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+
+        cc.systemEvent.on(EntityEvent.ENTITIY_DIE, this.onEntityDie, this);
     }
 
     private removeEvent(): void {
@@ -291,6 +322,8 @@ export default class BattleMediator extends Mediator implements IMediator {
         cc.systemEvent.off(BattleConst.BATTLE_VIEW_TOUCH_RIGHT_END, this.onTouchRightEnd, this);
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.off(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
+
+        cc.systemEvent.off(EntityEvent.ENTITIY_DIE, this.onEntityDie, this);
     }
 
     private onKeyDown(evt: cc.Event.EventKeyboard): void {
@@ -357,11 +390,11 @@ export default class BattleMediator extends Mediator implements IMediator {
 
     private hitNote(track: string, result: Function): void {
         this.player.atk();
-        for (let index = 0; index < this.noteArr.length; index++) {
-            var note: NoteItem = this.noteArr[index];
-            if (note.getTrack() == track) {
-                note.isHit(result);
-            }
+        for (let index = 0; index < this.monsterArr.length; index++) {
+            var note: Monster = this.monsterArr[index];
+            // if (note.getTrack() == track) {
+            //     note.isHit(result);
+            // }
         }
     }
 

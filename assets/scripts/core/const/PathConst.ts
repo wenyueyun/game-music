@@ -11,4 +11,6 @@ export default class PathConst
     public static MONSTER:string = "monster/";
 
     public static AUDIO:string = "audio/";
+
+    public static TEXTURE:string = "texture/";
 }

@@ -12,7 +12,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "model",
+    "_name": "Girl",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -46,14 +46,14 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": 0,
-      "y": 0,
+      "x": -434,
+      "y": -245,
       "z": 0
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 0.5,
+      "y": 0.5,
       "z": 1
     },
     "_rotationX": 0,
@@ -83,7 +83,7 @@
     "_dstBlendFactor": 771,
     "paused": false,
     "defaultSkin": "",
-    "defaultAnimation": "atk_01",
+    "defaultAnimation": "",
     "loop": true,
     "premultipliedAlpha": true,
     "timeScale": 1,
@@ -92,7 +92,7 @@
     },
     "_N$debugSlots": false,
     "_N$debugBones": false,
-    "_id": "5fWTegVk5OAqb+3iJVlZca"
+    "_id": "3eWApZPT9LkoI9RJgLZMoN"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -100,9 +100,9 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "fb9e5ca0-b7ba-4242-96b9-79124375701f"
     },
-    "fileId": "a1T5vrEzxKn4W01Uzjh5X8",
+    "fileId": "38Q5oAhHZFIolb/vLplPJP",
     "sync": false
   }
 ]

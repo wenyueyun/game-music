@@ -105,7 +105,7 @@ export default class Mediator
 	 * 		The notification instance to be handled.
 	 */
 	handleNotification(notification: INotification): void {
-		if (notification.getName() != "game_update") {
+		if (notification.getName().indexOf("update") == -1) {
 			cc.log(this.mediatorName + ".handleNotification ------------->  " + notification.getName());
 		}
 	}

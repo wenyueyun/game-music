@@ -1,4 +1,6 @@
 import NoteConfig from "../../core/config/NoteConfig";
+import MonsterVO from "../../core/entity/MonsterVO";
+import Monster from "../../core/entity/Monster";
 
 export default class NoteItem {
     private vo: NoteConfig;
@@ -7,8 +9,6 @@ export default class NoteItem {
     private time: cc.Label;
     private track: string;
     private callFun: Function;
-
-    private startTime: number;
     private lastAudioTime: number;
 
     public constructor(track: string, node: cc.Node, parent: cc.Node, position: cc.Vec2, call: Function) {
@@ -28,24 +28,13 @@ export default class NoteItem {
         var target_x = (this.vo.startTime - audioTime * 1000) * speed - 400
         var pos = this.node.getPosition();
         if (this.lastAudioTime == audioTime) {
-            // if (pos.x > target_x) {
-                pos.x -= speed * dt * 1000;
-            // }
+            pos.x -= speed * dt * 1000;
         }
         else {
             if (pos.x > target_x) {
                 pos.x = target_x;
             }
         }
-
-
-        // // if (Math.abs(dis - pos.x) > 200 * speed) {
-        // //     pos.x = dis;
-        // // }
-
-        // pos.x = dis;
-
-        this.startTime -= dt * 1000;
 
         this.node.setPosition(pos);
 
@@ -59,17 +48,13 @@ export default class NoteItem {
 
     public setVO(vo: NoteConfig) {
         this.vo = vo;
-        this.startTime = vo.startTime;
         this.time.string = this.vo.startTime.toString();
 
-        // if(this.vo.endTime > this.vo.startTime)
-        // {
-        //     this.node.anchorX = 0;
-        // }
-        // else
-        // {
-        //     this.node.anchorX = 0.5;
-        // }
+        var mon_vo: MonsterVO = new MonsterVO(parseInt(vo.val));
+        var mon: Monster = new Monster();
+        mon.setParent(this.node);
+        mon.setNote(vo);
+        mon.setVO(mon_vo);
     }
 
     public setWidth(value: number): void {
@@ -100,15 +85,6 @@ export default class NoteItem {
 
     public isHit(result: Function): boolean {
         var pos = this.node.getPosition();
-        // cc.log("hit------------ "+ this.vo.startTime  +" --------- " + this.startTime);
-        // if(this.startTime <= 100  && this.startTime > -100)
-        // {
-        //     cc.log("pos---------------->击中 " + this.vo.startTime);
-        //     if (result) {
-        //         result(this);
-        //     }
-        //     return true;
-        // }
 
         if (pos.x >= -420 && pos.x < -380) {
             cc.log("pos---------------->击中 " + this.vo.startTime);

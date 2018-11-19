@@ -41,7 +41,7 @@ export default class MainView extends BaseView {
         this.shareBtn.node.on(cc.Node.EventType.TOUCH_END, this.onShareClick);
 
         this.startBtn = cc.find("StartBtn", this.root).getComponent(cc.Button);
-        this.startBtn.node.active = false;
+        // this.startBtn.node.active = false;
         this.startBtn.node.on(cc.Node.EventType.TOUCH_END, this.onStartClick);
 
         this.showPro(true);
@@ -64,7 +64,6 @@ export default class MainView extends BaseView {
             var pro = Math.max(this.progressBar.progress, Math.min(value, 1));
             this.progressBar.progress = pro;
             this.progressLabel.string = (pro * 100).toString() + "%";
-            cc.log("加载进度-------------->" + pro);
         }
 
         if (value >= 1) {

@@ -139,9 +139,6 @@ export default class BattleView extends BaseView {
         this.timeLabel.string = Math.floor(time * 1000).toString();
     }
 
-    public setLevName(name: string): void {
-        this.scoreLabel.string = name;
-    }
 
     private onTouchLeftStart(): void {
         cc.systemEvent.dispatchEvent(new cc.Event(BattleConst.BATTLE_VIEW_TOUCH_LEFT_START, false));

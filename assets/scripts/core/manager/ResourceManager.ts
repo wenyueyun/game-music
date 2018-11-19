@@ -11,7 +11,7 @@ export default class ResourceManager {
         var res = this.getRes(path);
         if(res)
         {
-            cc.log("资源已加载---------》"+path);
+            cc.log("资源已加载---------"+path);
             complete(res);
             return;
         }
@@ -20,7 +20,7 @@ export default class ResourceManager {
                     cc.error(err.message || err);
                 }
                 else {
-                    cc.log("加载到的资源: ------------>" + prefab.name);
+                    // cc.log("加载到的资源: ------------>" + prefab.name);
                     complete(prefab);
                 }
             })
@@ -31,7 +31,7 @@ export default class ResourceManager {
         cc.loader.loadResArray(paths,
             (completedCount, totalCount, item) => {
                 if (progress) {
-                    cc.log("加载进度------>completedCount:"+completedCount+"    totalCount:"+totalCount);
+                    // cc.log("加载进度------>completedCount:"+completedCount+"    totalCount:"+totalCount);
                     progress((completedCount / totalCount).toFixed(2));
                 }
             },
@@ -53,7 +53,7 @@ export default class ResourceManager {
         cc.loader.loadResDir(dir,
             (completedCount, totalCount, item) => {
                 if (progress) {
-                    cc.log("加载进度------>completedCount:"+completedCount+"    totalCount:"+totalCount);
+                    // cc.log("加载进度------>completedCount:"+completedCount+"    totalCount:"+totalCount);
                     progress((completedCount / totalCount).toFixed(2));
                 }
             },

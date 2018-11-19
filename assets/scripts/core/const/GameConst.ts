@@ -6,7 +6,5 @@ export default class GameConst {
 
     public static GAME_UPDATE:string = "game_update";
 
-
-
     public static REMOTE_SERVER_ROOT:string = "http://120.77.209.15:4141/";
 }

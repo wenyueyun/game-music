@@ -1,0 +1,454 @@
+
+act_soldier_033_.png
+size: 977,993
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+attack1 tx0001
+  rotate: false
+  xy: 0, 793
+  size: 275, 200
+  orig: 275, 200
+  offset: 0, 0
+  index: -1
+attack1 tx0002
+  rotate: false
+  xy: 0, 593
+  size: 275, 200
+  orig: 275, 200
+  offset: 0, 0
+  index: -1
+attack1 tx0003
+  rotate: false
+  xy: 275, 793
+  size: 275, 200
+  orig: 275, 200
+  offset: 0, 0
+  index: -1
+attack1 tx0004
+  rotate: false
+  xy: 0, 393
+  size: 275, 200
+  orig: 275, 200
+  offset: 0, 0
+  index: -1
+attack1 tx0005
+  rotate: false
+  xy: 275, 593
+  size: 275, 200
+  orig: 275, 200
+  offset: 0, 0
+  index: -1
+attack1 tx0006
+  rotate: false
+  xy: 550, 793
+  size: 275, 200
+  orig: 275, 200
+  offset: 0, 0
+  index: -1
+attack1 tx0009
+  rotate: false
+  xy: 0, 193
+  size: 275, 200
+  orig: 275, 200
+  offset: 0, 0
+  index: -1
+attack1 tx0011
+  rotate: false
+  xy: 275, 393
+  size: 275, 200
+  orig: 275, 200
+  offset: 0, 0
+  index: -1
+body1
+  rotate: true
+  xy: 926, 193
+  size: 26, 38
+  orig: 26, 38
+  offset: 0, 0
+  index: -1
+body2
+  rotate: false
+  xy: 920, 38
+  size: 27, 21
+  orig: 27, 21
+  offset: 0, 0
+  index: -1
+face_atk
+  rotate: true
+  xy: 926, 219
+  size: 55, 35
+  orig: 55, 35
+  offset: 0, 0
+  index: -1
+face_stay1
+  rotate: false
+  xy: 800, 0
+  size: 55, 34
+  orig: 55, 34
+  offset: 0, 0
+  index: -1
+face_stay2
+  rotate: false
+  xy: 901, 59
+  size: 54, 34
+  orig: 54, 34
+  offset: 0, 0
+  index: -1
+face_stay3
+  rotate: false
+  xy: 846, 59
+  size: 55, 34
+  orig: 55, 34
+  offset: 0, 0
+  index: -1
+foot_l1
+  rotate: true
+  xy: 480, 34
+  size: 18, 42
+  orig: 18, 42
+  offset: 0, 0
+  index: -1
+foot_l2
+  rotate: true
+  xy: 887, 39
+  size: 20, 33
+  orig: 20, 33
+  offset: 0, 0
+  index: -1
+foot_r1
+  rotate: true
+  xy: 846, 36
+  size: 23, 41
+  orig: 23, 41
+  offset: 0, 0
+  index: -1
+foot_r2
+  rotate: false
+  xy: 963, 955
+  size: 14, 38
+  orig: 14, 38
+  offset: 0, 0
+  index: -1
+hair_1
+  rotate: false
+  xy: 723, 16
+  size: 77, 77
+  orig: 77, 77
+  offset: 0, 0
+  index: -1
+hair_2
+  rotate: true
+  xy: 723, 0
+  size: 16, 35
+  orig: 16, 35
+  offset: 0, 0
+  index: -1
+hair_3
+  rotate: false
+  xy: 926, 274
+  size: 36, 119
+  orig: 36, 119
+  offset: 0, 0
+  index: -1
+hair_4
+  rotate: true
+  xy: 425, 52
+  size: 41, 119
+  orig: 41, 119
+  offset: 0, 0
+  index: -1
+hair_5
+  rotate: false
+  xy: 760, 207
+  size: 17, 48
+  orig: 17, 48
+  offset: 0, 0
+  index: -1
+hand_l1
+  rotate: true
+  xy: 160, 1
+  size: 18, 24
+  orig: 18, 24
+  offset: 0, 0
+  index: -1
+hand_l1z
+  rotate: false
+  xy: 963, 929
+  size: 14, 26
+  orig: 14, 26
+  offset: 0, 0
+  index: -1
+hand_l2
+  rotate: true
+  xy: 963, 906
+  size: 23, 14
+  orig: 23, 14
+  offset: 0, 0
+  index: -1
+hand_l3
+  rotate: false
+  xy: 758, 6
+  size: 13, 10
+  orig: 13, 10
+  offset: 0, 0
+  index: -1
+hand_l3c
+  rotate: false
+  xy: 955, 81
+  size: 22, 12
+  orig: 22, 12
+  offset: 0, 0
+  index: -1
+hand_l3cf
+  rotate: false
+  xy: 760, 198
+  size: 12, 9
+  orig: 12, 9
+  offset: 0, 0
+  index: -1
+head
+  rotate: true
+  xy: 636, 12
+  size: 81, 87
+  orig: 81, 87
+  offset: 0, 0
+  index: -1
+headset_1
+  rotate: true
+  xy: 688, 195
+  size: 60, 72
+  orig: 60, 72
+  offset: 0, 0
+  index: -1
+headset_2
+  rotate: true
+  xy: 544, 56
+  size: 37, 92
+  orig: 37, 92
+  offset: 0, 0
+  index: -1
+lunzi
+  rotate: false
+  xy: 142, 0
+  size: 18, 19
+  orig: 18, 19
+  offset: 0, 0
+  index: -1
+lunzi_2
+  rotate: false
+  xy: 855, 15
+  size: 20, 21
+  orig: 20, 21
+  offset: 0, 0
+  index: -1
+skill tx0001
+  rotate: false
+  xy: 825, 893
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0002
+  rotate: false
+  xy: 0, 93
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0003
+  rotate: false
+  xy: 550, 293
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0004
+  rotate: false
+  xy: 825, 793
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0005
+  rotate: false
+  xy: 138, 93
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0006
+  rotate: false
+  xy: 550, 193
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0007
+  rotate: true
+  xy: 688, 255
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0008
+  rotate: false
+  xy: 825, 693
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0009
+  rotate: false
+  xy: 276, 93
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0010
+  rotate: false
+  xy: 825, 593
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0011
+  rotate: false
+  xy: 414, 93
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0012
+  rotate: false
+  xy: 825, 493
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0013
+  rotate: false
+  xy: 825, 393
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0014
+  rotate: false
+  xy: 788, 293
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0015
+  rotate: false
+  xy: 552, 93
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0016
+  rotate: false
+  xy: 788, 193
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0017
+  rotate: false
+  xy: 690, 93
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0018
+  rotate: false
+  xy: 828, 93
+  size: 138, 100
+  orig: 138, 100
+  offset: 0, 0
+  index: -1
+skill tx0021
+  rotate: false
+  xy: 550, 593
+  size: 275, 200
+  orig: 275, 200
+  offset: 0, 0
+  index: -1
+skill tx0024
+  rotate: false
+  xy: 550, 593
+  size: 275, 200
+  orig: 275, 200
+  offset: 0, 0
+  index: -1
+skill tx0022
+  rotate: false
+  xy: 275, 193
+  size: 275, 200
+  orig: 275, 200
+  offset: 0, 0
+  index: -1
+skill tx0025
+  rotate: false
+  xy: 275, 193
+  size: 275, 200
+  orig: 275, 200
+  offset: 0, 0
+  index: -1
+skill tx0023
+  rotate: false
+  xy: 550, 393
+  size: 275, 200
+  orig: 275, 200
+  offset: 0, 0
+  index: -1
+skill tx0026
+  rotate: false
+  xy: 550, 393
+  size: 275, 200
+  orig: 275, 200
+  offset: 0, 0
+  index: -1
+speaker_1
+  rotate: true
+  xy: 0, 7
+  size: 86, 142
+  orig: 86, 142
+  offset: 0, 0
+  index: -1
+speaker_2
+  rotate: false
+  xy: 800, 34
+  size: 46, 59
+  orig: 46, 59
+  offset: 0, 0
+  index: -1
+speaker_3
+  rotate: true
+  xy: 142, 19
+  size: 74, 131
+  orig: 74, 131
+  offset: 0, 0
+  index: -1
+speaker_4
+  rotate: true
+  xy: 425, 22
+  size: 30, 55
+  orig: 30, 55
+  offset: 0, 0
+  index: -1
+weapon
+  rotate: false
+  xy: 273, 57
+  size: 152, 36
+  orig: 152, 36
+  offset: 0, 0
+  index: -1
+weapon 2
+  rotate: false
+  xy: 273, 22
+  size: 152, 35
+  orig: 152, 35
+  offset: 0, 0
+  index: -1

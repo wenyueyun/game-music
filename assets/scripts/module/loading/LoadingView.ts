@@ -27,7 +27,6 @@ export default class LoadingView extends BaseView {
             var pro =  Math.max(this.bar.progress, Math.min(value, 1));
             this.bar.progress =pro;
             this.proLabel.string = (pro*100).toString()+"%";
-            cc.log("加载进度-------------->" + pro);
         }
     }
 

@@ -6,7 +6,7 @@ import ConfigManager from "../manager/ConfigManager";
 export default class MonsterVO extends EntityVO
 {
     public config:MonsterConfig;
-
+    
     public constructor(mID:number)
     {
         super();
@@ -16,6 +16,6 @@ export default class MonsterVO extends EntityVO
 
     public getModel():string
     {
-        return PathConst.PLAYER + this.config.model;
+        return PathConst.MONSTER + this.config.model;
     }
 }

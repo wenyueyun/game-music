@@ -52,8 +52,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 1,
-      "y": 1,
+      "x": 0.5,
+      "y": 0.5,
       "z": 1
     },
     "_rotationX": 0,
@@ -92,7 +92,7 @@
     },
     "_N$debugSlots": false,
     "_N$debugBones": false,
-    "_id": "5fgKJHJ0NG4IULI04A6UaN"
+    "_id": "6fdfLj3xlOr6kSwZMFVs4d"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -100,7 +100,7 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "ec24d179-df33-450e-a245-8fd756a1fc86"
     },
     "fileId": "7dBoWzZpdOVo6lM4zJc1gy",
     "sync": false
