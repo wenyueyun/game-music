@@ -11,7 +11,7 @@
     {
       "id": "2001",
       "name": "蝙蝠",
-      "type": "2",
+      "type": "1",
       "hit": "1",
       "skill": "10003",
       "model": "Bat_01"
@@ -19,7 +19,7 @@
     {
       "id": "2002",
       "name": "幽灵",
-      "type": "2",
+      "type": "1",
       "hit": "1",
       "skill": "10001",
       "model": "Ghost_01"
@@ -27,7 +27,7 @@
     {
       "id": "2003",
       "name": "魔手",
-      "type": "2",
+      "type": "1",
       "hit": "1",
       "skill": "10001",
       "model": "Hand_01"
@@ -35,7 +35,7 @@
     {
       "id": "2004",
       "name": "骷髅",
-      "type": "2",
+      "type": "1",
       "hit": "1",
       "skill": "10004",
       "model": "Skull_01"
@@ -43,7 +43,7 @@
     {
       "id": "2005",
       "name": "狼人",
-      "type": "2",
+      "type": "1",
       "hit": "1",
       "skill": "10001",
       "model": "Werewolf_01"
@@ -51,7 +51,7 @@
     {
       "id": "2006",
       "name": "僵尸",
-      "type": "2",
+      "type": "1",
       "hit": "1",
       "skill": "10001",
       "model": "Zombie_01"
@@ -62,15 +62,15 @@
       "type": "2",
       "hit": "2",
       "skill": "10007",
-      "model": ""
+      "model": "Ghost_01"
     },
     {
       "id": "2008",
       "name": "面条怪（组合怪）",
-      "type": "2",
+      "type": "3",
       "hit": "3",
       "skill": "10004",
-      "model": ""
+      "model": "Ghost_01"
     }
   ]
 }

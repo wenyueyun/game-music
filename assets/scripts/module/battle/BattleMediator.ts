@@ -11,7 +11,6 @@ import BattleConst from "./BattleConst";
 import GameConst from "../../core/const/GameConst";
 import LevelConst from "../level/LevelConst";
 import NoteConfig from "../../core/config/NoteConfig";
-import PoolManager from "../../core/manager/PoolManager";
 import ConfigManager from "../../core/manager/ConfigManager";
 import PathConst from "../../core/const/PathConst";
 import ResourceManager from "../../core/manager/ResourceManager";
@@ -19,8 +18,6 @@ import LoadingConst from "../loading/LoadingConst";
 import OverConst from "../Over/OverConst";
 import PauseConst from "../pause/PauseConst";
 import MainConst from "../main/MainConst";
-import Game from "../../Game";
-import PlayerVO from "../../core/entity/PlayerVO";
 import Monster from "../../core/entity/Monster";
 import MonsterVO from "../../core/entity/MonsterVO";
 import EntityEvent from "../../core/const/EntityEvent";
@@ -33,14 +30,28 @@ export default class BattleMediator extends Mediator implements IMediator {
     private monsterArr: Array<Monster>;
     private musicConfig: MusicConfig;
     private levelConfig: LevelConfig;
-    private defaultDis: number = 1200;
-    private defaultTime: number = 5000;
-    private speed: number = this.defaultDis / this.defaultTime;
+    // private defaultDis: number = 1200;
+    // private defaultTime: number = 5000;
+    // private speed: number = this.defaultDis / this.defaultTime;
+
+
+    //每一个节拍的时间(毫秒)
+    private tempoTime:number;
+    //每一个节拍在游戏中显示的宽度（固定值）
+    public tempoWidth:number = 150;
+    //显示的节拍数量（固定值    tempoNum*tempoWidth <= 1280/2+400）
+    private tempoNum:number = 7;
+    //速度(节拍宽度/节拍时间)
+    private speed:number;
+
+
+
+
     private curLev: number;
     private isPlay: boolean;
     private proxy: BattleProxy;
     private player: Player;
-    private noteWidth: number;
+    // private noteWidth: number;
     private audio: cc.AudioClip;
 
     private touchNote: NoteItem;
@@ -156,7 +167,11 @@ export default class BattleMediator extends Mediator implements IMediator {
             this.resArr.push(PathConst.MAP + this.levelConfig.map);
             this.musicConfig = ConfigManager.getInstance().getMusic(this.levelConfig.music);
             if (this.musicConfig != null) {
-                this.noteWidth = this.defaultDis / (this.defaultTime / (60 / this.musicConfig.bpm * 1000));
+                // this.noteWidth = this.defaultDis / (this.defaultTime / (60 / this.musicConfig.bpm * 1000));
+
+                this.tempoTime = 60/this.musicConfig.bpm * 1000;
+                this.speed = this.tempoWidth / this.tempoTime;
+
                 this.resArr.push(PathConst.AUDIO + this.musicConfig.audioName);
             }
         }
@@ -252,13 +267,14 @@ export default class BattleMediator extends Mediator implements IMediator {
     private createNote(time: number, value: Array<NoteConfig>, track: string, posy: number) {
         for (let index = 0; index < value.length; index++) {
             var note: NoteConfig = value[index];
-            if ((note.startTime - time * 1000) <= this.defaultTime) {
+            if ((note.startTime - time * 1000) <= this.tempoTime * this.tempoNum) {
 
                 var mon_vo: MonsterVO = new MonsterVO(parseInt(note.val));
                 var mon: Monster = new Monster();
                 mon.setParent(this.getViewComponent().play);
                 mon.setPos(new cc.Vec2((note.startTime - time * 1000) * this.speed - 400, posy));
                 mon.setNote(note);
+                mon.setTempoTime(this.tempoTime);
                 mon.setVO(mon_vo);
                 this.monsterArr.push(mon);
                 value.splice(index, 1);

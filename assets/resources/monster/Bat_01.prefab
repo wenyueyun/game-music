@@ -83,7 +83,7 @@
     "_dstBlendFactor": 771,
     "paused": false,
     "defaultSkin": "",
-    "defaultAnimation": "",
+    "defaultAnimation": "run_01",
     "loop": true,
     "premultipliedAlpha": true,
     "timeScale": 1,
@@ -92,7 +92,7 @@
     },
     "_N$debugSlots": false,
     "_N$debugBones": false,
-    "_id": "b5LAs4qv1KfJPG6TK/Pll4"
+    "_id": "2chOtpuxhHs5TbYHSUq9UR"
   },
   {
     "__type__": "cc.PrefabInfo",

@@ -8,8 +8,22 @@ export default class Player extends Entity {
         super();
     }
 
-    public getVO(): EntityVO {
+    public getVO(): PlayerVO {
         return this.vo as PlayerVO;
+    }
+
+    protected showModel(prefab:cc.Prefab):void
+    {
+        this.model = cc.instantiate(prefab);
+        if (this.model != null) {
+
+            this.setSkeleton(this.model.getComponent(sp.Skeleton));
+
+            this.node.addChild(this.model);
+            this.model.setPosition(cc.v2(0, -this.modeSize.y / 2 * this.model.scale));
+
+            this.run();
+        }
     }
 
     protected skeletonEvent(trackEntry: any, event: any) {

@@ -57,19 +57,25 @@ export default class Entity implements IEntity {
             }
             else {
                 cc.log("怪物模型加载成功");
-                this.model = cc.instantiate(prefab);
-                if (this.model != null) {
-
-                    this.setSkeleton(this.model.getComponent(sp.Skeleton));
-
-                    this.node.addChild(this.model);
-                    this.model.setPosition(cc.v2(0, -this.modeSize.y / 2 * this.model.scale));
-
-                    this.run();
-                }
+               this.showModel(prefab);
             }
         })
     }
+
+    protected showModel(prefab:cc.Prefab):void
+    {
+        // this.model = cc.instantiate(prefab);
+        // if (this.model != null) {
+
+        //     this.setSkeleton(this.model.getComponent(sp.Skeleton));
+
+        //     this.node.addChild(this.model);
+        //     this.model.setPosition(cc.v2(0, -this.modeSize.y / 2 * this.model.scale));
+
+        //     this.run();
+        // }
+    }
+
 
     public setParent(value: cc.Node) {
         cc.log("setParent ---->" + value.name);
@@ -99,7 +105,7 @@ export default class Entity implements IEntity {
         }
     }
 
-    private setSkeleton(value: sp.Skeleton): void {
+    protected setSkeleton(value: sp.Skeleton): void {
         if (value != null) {
             this.skeleton = value;
 

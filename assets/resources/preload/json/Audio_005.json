@@ -1,8 +1,8 @@
 {
-  "Name": "Audio_001",
-  "SourceClipName": "Audio_001",
+  "Name": "Audio_005",
+  "SourceClipName": "Audio_005",
   "SampleRate": 44100,
-  "BPM": 240,
+  "BPM": 120,
   "Tracks": [
     {
       "Name": "Track_001_1",
