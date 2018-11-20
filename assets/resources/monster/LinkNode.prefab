@@ -12,7 +12,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "LinkNode",
+    "_name": "ModelLink",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -97,7 +97,7 @@
     "_isTrimmedMode": true,
     "_state": 0,
     "_atlas": null,
-    "_id": "34adik+8RINafBuQ8jZRZj"
+    "_id": "4deSKIiblAeYyUAljWDGvZ"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -105,9 +105,9 @@
       "__id__": 1
     },
     "asset": {
-      "__id__": 0
+      "__uuid__": "36a39b0e-1b87-4b18-9e9d-3a5c3fba3d3a"
     },
-    "fileId": "20AomJRGJLYr5h9eAoCfUi",
+    "fileId": "23Fe1y8UNGmaQQSbNRFK89",
     "sync": false
   }
 ]

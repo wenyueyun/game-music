@@ -2,7 +2,6 @@ import Mediator from "../../mvc/patterns/mediator/Mediator";
 import IMediator from "../../mvc/interfaces/IMediator";
 import INotification from "../../mvc/interfaces/INotification";
 import BattleView from "./BattleView";
-import NoteItem from "./NoteItem";
 import BattleProxy from "./BattleProxy";
 import MusicConfig from "../../core/config/AudioConfig";
 import LevelConfig from "../../core/config/LevelConfig";
@@ -21,46 +20,47 @@ import MainConst from "../main/MainConst";
 import Monster from "../../core/entity/Monster";
 import MonsterVO from "../../core/entity/MonsterVO";
 import EntityEvent from "../../core/const/EntityEvent";
-import EntityVO from "../../core/entity/EntityVO";
+import PlayerVO from "../../core/entity/PlayerVO";
+import EffectManager from "../../core/manager/EffectManager";
+import WXManager from "../../core/manager/WXManager";
 
 export default class BattleMediator extends Mediator implements IMediator {
     public static NAME: string = "BattleMediator";
     private curAudio: number = -1;
-    // private noteArr: Array<NoteItem>;
     private monsterArr: Array<Monster>;
     private musicConfig: MusicConfig;
     private levelConfig: LevelConfig;
-    // private defaultDis: number = 1200;
-    // private defaultTime: number = 5000;
-    // private speed: number = this.defaultDis / this.defaultTime;
 
-
-    //每一个节拍的时间(毫秒)
-    private tempoTime:number;
+    //轨道位置（固定值）
+    private trackX: number = -365;
     //每一个节拍在游戏中显示的宽度（固定值）
-    public tempoWidth:number = 150;
+    public tempoWidth: number = 150;
     //显示的节拍数量（固定值    tempoNum*tempoWidth <= 1280/2+400）
-    private tempoNum:number = 7;
+    private tempoNum: number = 7;
     //速度(节拍宽度/节拍时间)
-    private speed:number;
-
-
-
+    private speed: number;
+    //每一个节拍的时间(毫秒)
+    private tempoTime: number;
 
     private curLev: number;
     private isPlay: boolean;
     private proxy: BattleProxy;
     private player: Player;
-    // private noteWidth: number;
     private audio: cc.AudioClip;
 
-    private touchNote: NoteItem;
+    private touchMonster: Monster;
+    private doubleMonster: Monster;
+    private doubleTime: number;
+
+    private isDoubleLeft:boolean;
+    private isDoubleRight:boolean;
 
     private isTouchLeft: boolean; //是否按下左边
     private isTouchRight: boolean;//是否按下右边
 
     private isPressLeft: boolean;//是否按住左边
     private isPressRight: boolean;//是否按住右边
+
 
     private resArr: Array<string> = new Array<string>();
 
@@ -79,16 +79,15 @@ export default class BattleMediator extends Mediator implements IMediator {
         }
     }
 
-    
-    public get isPause() : boolean {
-        return  this._isPause;
+
+    public get isPause(): boolean {
+        return this._isPause;
     }
-    
+
 
     public constructor(viewComponent: any) {
         super(BattleMediator.NAME, viewComponent)
         this.proxy = <BattleProxy>(this.facade.retrieveProxy(BattleProxy.NAME));
-        // this.noteArr = new Array<NoteItem>();
         this.monsterArr = new Array<Monster>();
     }
 
@@ -121,17 +120,13 @@ export default class BattleMediator extends Mediator implements IMediator {
                 cc.log("准备进入战斗");
                 this.isPlay = false;
                 this.curLev = data;
-                cc.log("this.curLev-----------"+this.curLev);
+                cc.log("this.curLev-----------" + this.curLev);
                 this.loadRes();
                 break;
             case BattleConst.BATTLE_MEDIATOR_CLOSE:
             case BattleConst.BATTLE_MEDIATOR_EXIT:
                 //退出
                 this.onClose();
-                // for (let index = 0; index < this.noteArr.length; index++) {
-                //     const element = this.noteArr[index];
-                //     PoolManager.getInstance().putNode(PoolManager.NOTE_POOL, element.getNode());
-                // }
 
                 for (let index = 0; index < this.monsterArr.length; index++) {
                     this.monsterArr[index].destroy();
@@ -157,159 +152,6 @@ export default class BattleMediator extends Mediator implements IMediator {
                 break;
         }
     }
-
-    //预加载资源
-    private loadRes() {
-        cc.log("准备预加载资源");
-        this.resArr = [];
-        this.levelConfig = ConfigManager.getInstance().getLevel(this.curLev);
-        if (this.levelConfig != null) {
-            this.resArr.push(PathConst.MAP + this.levelConfig.map);
-            this.musicConfig = ConfigManager.getInstance().getMusic(this.levelConfig.music);
-            if (this.musicConfig != null) {
-                // this.noteWidth = this.defaultDis / (this.defaultTime / (60 / this.musicConfig.bpm * 1000));
-
-                this.tempoTime = 60/this.musicConfig.bpm * 1000;
-                this.speed = this.tempoWidth / this.tempoTime;
-
-                this.resArr.push(PathConst.AUDIO + this.musicConfig.audioName);
-            }
-        }
-
-        for (let index = 0; index < this.resArr.length; index++) {
-            const element = this.resArr[index];
-            cc.log(element);
-        }
-
-        this.sendNotification(LoadingConst.LOADING_MEDIATOR_OPEN);
-        ResourceManager.getInstance().loadResArray(this.resArr,
-            () => {
-                cc.log("预加载资源完成");
-                this.sendNotification(LoadingConst.LOADING_MEDIATOR_CLOSE);
-                this.addEvent();
-                this.getViewComponent().open();
-            },
-            (progress) => {
-                //更新加载进度
-                this.sendNotification(LoadingConst.LOADING_MEDIATOR_UPDATE, progress);
-            });
-    }
-
-    //UI资源加载成功
-    private onOpenSucc() {
-        cc.log("初始化UI完成");
-        this._isPause=false;
-
-        this.audio = ResourceManager.getInstance().getRes(PathConst.AUDIO + this.musicConfig.audioName);
-        this.curAudio = cc.audioEngine.play(this.audio, false, 1);
-
-        var map: any = ResourceManager.getInstance().getRes(PathConst.MAP + this.levelConfig.map);
-        this.getViewComponent().initMap(map);
-
-        cc.audioEngine.setFinishCallback(this.curAudio, () => {
-            cc.log("音乐播放结束");
-            this.sendNotification(OverConst.OVER_MEDIATOR_OPEN);
-        });
-
-        //显示主角
-        this.player = new Player();
-        this.player.setParent(this.getViewComponent().play);
-        this.player.setScale(new cc.Vec2(0.5, 0.5));
-        this.player.setPos(new cc.Vec2(-520, -210));
-        // this.player.setVO(new PlayerVO(2));
-
-        cc.log("go -------->");
-        this.isPlay = true;
-    }
-
-    private onUpdate(dt): void {
-        if (this.isPause == false && this.isPlay == true)
-         {
-            if (cc.audioEngine.isMusicPlaying) {
-                if (this.curAudio != -1) {
-                    let audioTime = cc.audioEngine.getCurrentTime(this.curAudio);
-                    this.getViewComponent().setMusicTime(audioTime);
-                    this.updateNote(audioTime);
-                    for (let i = 0; i < this.monsterArr.length; i++) {
-                        this.monsterArr[i].onUpdate(audioTime, dt, this.speed);
-                    }
-                }
-            }
-            this.getViewComponent().updateMap(dt);
-
-
-            //检测按住的长节奏
-            if (this.touchNote != null) {
-                this.touchNote.getVO().endTime -= dt * 1000;
-                if (this.touchNote.getVO().endTime <= this.touchNote.getVO().startTime) {
-                    this.touchNote.dispose();
-                    this.touchNote = null;
-
-                    if (this.isPressLeft) {
-                        this.player.getModel().runAction(cc.moveTo(0.1, new cc.Vec2(-500, -210)));
-                    }
-                }
-            }
-        }
-    }
-
-
-    private updateNote(time: number): void {
-        if (this.musicConfig.tracks.length > 0) {
-            this.createNote(time, this.musicConfig.tracks[0].notes, "up", this.getViewComponent().upVec.y)
-        }
-
-        if (this.musicConfig.tracks.length > 1) {
-            this.createNote(time, this.musicConfig.tracks[1].notes, "down", this.getViewComponent().downVec.y)
-        }
-    }
-
-    private createNote(time: number, value: Array<NoteConfig>, track: string, posy: number) {
-        for (let index = 0; index < value.length; index++) {
-            var note: NoteConfig = value[index];
-            if ((note.startTime - time * 1000) <= this.tempoTime * this.tempoNum) {
-
-                var mon_vo: MonsterVO = new MonsterVO(parseInt(note.val));
-                var mon: Monster = new Monster();
-                mon.setParent(this.getViewComponent().play);
-                mon.setPos(new cc.Vec2((note.startTime - time * 1000) * this.speed - 400, posy));
-                mon.setNote(note);
-                mon.setTempoTime(this.tempoTime);
-                mon.setVO(mon_vo);
-                this.monsterArr.push(mon);
-                value.splice(index, 1);
-                // var node: cc.Node = PoolManager.getInstance().getNode(PoolManager.NOTE_POOL);
-                // var noteItem: NoteItem = new NoteItem(track, node, this.getViewComponent().play, new cc.Vec2((noteVo.startTime - time * 1000) * this.speed - 400, posy), this.destroyNote.bind(this));
-                // noteItem.setVO(noteVo);
-                // if (noteVo.startTime == noteVo.endTime) {
-                //     noteItem.setWidth(this.noteWidth);
-                // }
-                // else {
-                //     noteItem.setWidth(this.noteWidth * (noteVo.endTime - noteVo.startTime) / (60 / this.musicConfig.bpm * 1000));
-                // }
-
-                // this.noteArr.push(noteItem);
-                // value.splice(index, 1);
-            }
-            else {
-                index++;
-            }
-        }
-    }
-
-    private onEntityDie(value: EntityVO) {
-        // PoolManager.getInstance().putNode(PoolManager.NOTE_POOL, value.getNode());
-
-        for (let index = 0; index < this.monsterArr.length; index++) {
-            const element = this.monsterArr[index];
-            if (element.getVO() == value) {
-                element.destroy();
-                this.monsterArr.splice(index, 1);
-                break;
-            }
-        }
-    }
-
 
 
     private addEvent(): void {
@@ -342,6 +184,154 @@ export default class BattleMediator extends Mediator implements IMediator {
         cc.systemEvent.off(EntityEvent.ENTITIY_DIE, this.onEntityDie, this);
     }
 
+
+    //预加载资源
+    private loadRes() {
+        cc.log("准备预加载资源");
+        this.resArr = [];
+        this.levelConfig = ConfigManager.getInstance().getLevel(this.curLev);
+        if (this.levelConfig != null) {
+            this.resArr.push(PathConst.MAP + this.levelConfig.map);
+            this.musicConfig = ConfigManager.getInstance().getMusic(this.levelConfig.music);
+            if (this.musicConfig != null) {
+                this.tempoTime = 60 / this.musicConfig.bpm * 1000;
+                this.speed = this.tempoWidth / this.tempoTime;
+                this.resArr.push(PathConst.AUDIO + this.musicConfig.audioName);
+            }
+        }
+
+        for (let index = 0; index < this.resArr.length; index++) {
+            const element = this.resArr[index];
+            cc.log(element);
+        }
+
+        this.sendNotification(LoadingConst.LOADING_MEDIATOR_OPEN);
+        ResourceManager.getInstance().loadResArray(this.resArr,
+            () => {
+                cc.log("预加载资源完成");
+                this.sendNotification(LoadingConst.LOADING_MEDIATOR_CLOSE);
+                this.addEvent();
+                this.getViewComponent().open();
+            },
+            (progress) => {
+                //更新加载进度
+                this.sendNotification(LoadingConst.LOADING_MEDIATOR_UPDATE, progress);
+            });
+    }
+
+    //UI资源加载成功
+    private onOpenSucc() {
+        cc.log("初始化UI完成");
+        this._isPause = false;
+
+        this.audio = ResourceManager.getInstance().getRes(PathConst.AUDIO + this.musicConfig.audioName);
+        this.curAudio = cc.audioEngine.play(this.audio, false, 1);
+
+        var map: any = ResourceManager.getInstance().getRes(PathConst.MAP + this.levelConfig.map);
+        this.getViewComponent().initMap(map);
+
+        cc.audioEngine.setFinishCallback(this.curAudio, () => {
+            cc.log("音乐播放结束");
+            this.sendNotification(OverConst.OVER_MEDIATOR_OPEN);
+        });
+
+        //显示主角
+        this.player = new Player();
+        this.player.setParent(this.getViewComponent().play);
+        // this.player.setScale(new cc.Vec2(0.5, 0.5));
+        this.player.setPos(new cc.Vec2(-520, -210));
+        this.player.setVO(new PlayerVO(2));
+
+        cc.log("go -------->");
+        this.isPlay = true;
+
+        if (GameConst.isWX) {
+            this.getViewComponent().setUserInfo(WXManager.getInstance().nickName, WXManager.getInstance().avatarUrl);
+        }
+    }
+
+    private onUpdate(dt): void {
+        if (this.isPause == false && this.isPlay == true) {
+            if (cc.audioEngine.isMusicPlaying) {
+                if (this.curAudio != -1) {
+                    let audioTime = cc.audioEngine.getCurrentTime(this.curAudio);
+                    this.getViewComponent().setMusicTime(audioTime);
+                    this.updateNote(audioTime);
+                    for (let i = 0; i < this.monsterArr.length; i++) {
+                        this.monsterArr[i].onUpdate(audioTime, dt, this.speed);
+                    }
+                }
+            }
+            this.getViewComponent().updateMap(dt);
+
+
+            //检测按住的长节奏
+            if (this.touchMonster != null) {
+                this.touchMonster.getNote().endTime -= dt * 1000;
+                if (this.touchMonster.getNote().endTime <= this.touchMonster.getNote().startTime) {
+
+                    if (this.isPressLeft) {
+                        this.player.getNode().runAction(cc.moveTo(0.1, new cc.Vec2(-520, -200)));
+                    }
+                    this.touchMonster.die();
+                    this.touchMonster = null;
+                    this.isPressLeft = false;
+                    this.isPressRight = false;
+                }
+            }
+            else 
+            {
+                if (this.doubleTime > 0.1) {
+                    this.doubleMonster = null;
+                    this.isDoubleLeft = false;
+                    this.isDoubleRight = false;
+                    return;
+                }
+
+                if(this.doubleMonster != null) 
+                {
+                    if (this.isDoubleLeft == true && this.isDoubleRight == true) {
+                        this.doubleMonster.die();
+                        this.doubleMonster = null;
+                    }
+                }
+                this.doubleTime += dt;
+            }
+        }
+    }
+
+
+    private updateNote(time: number): void {
+        if (this.musicConfig.tracks.length > 0) {
+            this.createNote(time, this.musicConfig.tracks[0].notes, this.getViewComponent().upVec.y)
+        }
+
+        if (this.musicConfig.tracks.length > 1) {
+            this.createNote(time, this.musicConfig.tracks[1].notes, this.getViewComponent().downVec.y)
+        }
+    }
+
+    private createNote(time: number, value: Array<NoteConfig>, posy: number) {
+        for (let index = 0; index < value.length; index++) {
+            var note: NoteConfig = value[index];
+            if ((note.startTime - time * 1000) <= this.tempoTime * this.tempoNum) {
+                var mon_vo: MonsterVO = new MonsterVO(parseInt(note.val));
+                var mon: Monster = new Monster();
+                mon.setParent(this.getViewComponent().play);
+                mon.setPos(new cc.Vec2((note.startTime - time * 1000) * this.speed + this.trackX, posy));
+                mon.setNote(note);
+                mon.setTempoTime(this.tempoTime);
+                mon.setVO(mon_vo);
+                this.monsterArr.push(mon);
+                value.splice(index, 1);
+            }
+            else {
+                index++;
+            }
+        }
+    }
+
+
     private onKeyDown(evt: cc.Event.EventKeyboard): void {
         switch ((evt as any).keyCode) {
             case cc.macro.KEY.a:
@@ -367,71 +357,127 @@ export default class BattleMediator extends Mediator implements IMediator {
     }
 
     private onTouchLeftStart(): void {
-        cc.log("onTouchLeftStart-------------------2");
+        cc.log("onTouchLeftStart-------------------");
         if (!this.isTouchLeft) {
             this.isTouchLeft = true;
+            this.doubleTime = 0;
+            this.isDoubleLeft = true;
+
             this.tween(this.getViewComponent().laneUp);
             this.player.getModel().stopAllActions();
-            var seq = cc.sequence(cc.moveTo(0.1, new cc.Vec2(-500, -90)), cc.delayTime(0.2), cc.moveTo(0.1, new cc.Vec2(-520, -210)))
-            this.player.getModel().runAction(seq);
-            this.hitNote("up", this.hitResult.bind(this));
+            var seq = cc.sequence(cc.moveTo(0.1, new cc.Vec2(-520, 0)), cc.delayTime(0.2), cc.moveTo(0.1, new cc.Vec2(-520, -200)))
+            this.player.getNode().runAction(seq);
+            this.hitNote("A");
         }
     }
 
     private onTouchLeftEnd(): void {
+        cc.log("onTouchLeftEnd-------------------");
+        this.isDoubleLeft = false;
         this.isTouchLeft = false;
-
         if (this.isPressLeft) {
-            this.touchNote == null;
-            this.player.getModel().runAction(cc.moveTo(0.1, new cc.Vec2(-500, -210)));
+            this.touchMonster.touchEnd();
+            this.touchMonster == null;
+            this.isPressLeft = false;
+            this.player.getNode().runAction(cc.moveTo(0.1, new cc.Vec2(-520, -200)));
         }
 
     }
 
     private onTouchRightStart(): void {
+        cc.log("onTouchRightStart-------------------");
         if (!this.isTouchRight) {
-            this.isTouchRight = true;
-            this.tween(this.getViewComponent().laneDown);
-            this.hitNote("down", this.hitResult.bind(this));
-        }
+            this.doubleTime = 0;
+            this.isDoubleRight = true;
 
+            this.tween(this.getViewComponent().laneDown);
+            this.hitNote("B");
+        }
     }
 
     private onTouchRightEnd(): void {
+        cc.log("onTouchRightEnd-------------------");
+        this.isDoubleRight = false;
         this.isTouchRight = false;
         if (this.isPressRight) {
-            this.touchNote == null;
+            this.touchMonster.touchEnd();
+            this.touchMonster == null;
+            this.isPressRight = false;
         }
     }
 
-    private hitNote(track: string, result: Function): void {
+    private hitNote(track: string): void {
         this.player.atk();
         for (let index = 0; index < this.monsterArr.length; index++) {
-            var note: Monster = this.monsterArr[index];
-            // if (note.getTrack() == track) {
-            //     note.isHit(result);
-            // }
+            var mon: Monster = this.monsterArr[index];
+            if (mon != null) {
+                var pos = mon.getPos();
+                var dis = Math.abs(this.trackX - pos.x);
+                var type = mon.getVO().getType();
+                if (mon.getNote().track == track) {
+                    if (dis < 60) {
+                        // EffectManager.getInstance().showEffect("Atk02",this.player,this.player.getTopPos());
+                        // EffectManager.getInstance().showEffect("Atk01",this.player,this.player.getRightPos());
+                        // EffectManager.getInstance().showEffect("HP", this.player, this.player.getTopPos(), "30");
+                        cc.log("击中怪物------------->" + mon.getNote().startTime);
+                        if (type == 1) {
+                            var score: number = ConfigManager.getInstance().getGrade(dis);
+                            this.proxy.getData().score += score;
+                            mon.die();
+                        }
+                        else if (type == 3) {
+                            mon.touch();
+                            if (track == "A") {
+                                this.isPressLeft = true;
+                            }
+                            else if (track == "B") {
+                                this.isPressRight = true;
+                            }
+                            this.touchMonster = mon;
+                        }
+                        else if (type == 2) {
+                            this.doubleMonster = mon;
+                            cc.log("获取双击怪物");
+                        }
+                        break;
+                    }
+                }
+            }
         }
     }
 
-    private hitResult(value: NoteItem) {
-        var vo = value.getVO();
-        if (vo.endTime > vo.startTime) {
-            this.touchNote = value;
-            this.touchNote.setColor(cc.Color.GRAY);
-            if (value.getTrack() == "up") {
-                this.isPressLeft = true;
-                this.player.getModel().stopAllActions();
-                this.player.getModel().runAction(cc.moveTo(0.1, new cc.Vec2(-500, -90)));
+
+
+    private onEntityDie(evt: cc.Event.EventCustom) {
+        for (let index = 0; index < this.monsterArr.length; index++) {
+            const element = this.monsterArr[index];
+            if (element.getVO().ID == evt.detail) {
+                element.destroy();
+                this.monsterArr.splice(index, 1); 
+                break;
             }
-            else {
-                this.isPressRight = true;
-            }
-        }
-        else {
-            value.dispose();
         }
     }
+
+
+    // private hitResult(value: NoteItem) {
+    //     var vo = value.getVO();
+    //     if (vo.endTime > vo.startTime) {
+    //         this.touchNote = value;
+    //         this.touchNote.setColor(cc.Color.GRAY);
+    //         if (value.getTrack() == "up") {
+    //             this.isPressLeft = true;
+    //             this.player.getModel().stopAllActions();
+    //             this.player.getModel().runAction(cc.moveTo(0.1, new cc.Vec2(-500, -90)));
+    //         }
+    //         else {
+    //             this.isPressRight = true;
+    //         }
+    //     }
+    //     else {
+    //         value.dispose();
+    //     }
+    // }
 
     private tween(node: cc.Node) {
         var seq = cc.sequence(cc.scaleTo(0.1, 1.2, 1.2), cc.scaleTo(0.1, 1, 1))

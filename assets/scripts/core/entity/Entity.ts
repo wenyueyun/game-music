@@ -56,7 +56,6 @@ export default class Entity implements IEntity {
                 cc.error(err.message || err);
             }
             else {
-                cc.log("怪物模型加载成功");
                this.showModel(prefab);
             }
         })
@@ -64,45 +63,39 @@ export default class Entity implements IEntity {
 
     protected showModel(prefab:cc.Prefab):void
     {
-        // this.model = cc.instantiate(prefab);
-        // if (this.model != null) {
-
-        //     this.setSkeleton(this.model.getComponent(sp.Skeleton));
-
-        //     this.node.addChild(this.model);
-        //     this.model.setPosition(cc.v2(0, -this.modeSize.y / 2 * this.model.scale));
-
-        //     this.run();
-        // }
     }
 
 
-    public setParent(value: cc.Node) {
-        cc.log("setParent ---->" + value.name);
+    public setParent(value: cc.Node,zindex:number = 50) {
         this.parent = value;
         if (this.parent != null) {
-            this.parent.addChild(this.node, 99);
+            this.parent.addChild(this.node,zindex);
         }
         else {
             this.model.removeFromParent();
         }
-        // }
     }
 
     public setPos(value: cc.Vec2) {
-        cc.log("setPos ---->" + value);
         this.pos = value;
         if (this.node != null) {
             this.node.setPosition(value);
         }
     }
 
+  
     public setScale(value: cc.Vec2) {
-        cc.log("setScale ---->" + value);
         this.scale = value;
         if (this.node != null) {
             this.node.setScale(value);
         }
+    }
+
+
+    //加特效
+    public addEffect(effect:cc.Node)
+    {
+        this.node.addChild(effect,100);
     }
 
     protected setSkeleton(value: sp.Skeleton): void {
@@ -111,8 +104,6 @@ export default class Entity implements IEntity {
 
             var ske: any = this.skeleton.skeletonData.skeletonJson.skeleton;
             if (ske != null) {
-                cc.log("ske.width------------" + ske.width);
-                cc.log("ske.heith------------" + ske.height);
                 this.modeSize = cc.v2(ske.width, ske.height);
             }
 
@@ -185,6 +176,35 @@ export default class Entity implements IEntity {
         return this.model;
     }
 
+    public getNode():cc.Node
+    {
+        return this.node;
+    }
+
+    public getPos():cc.Vec2
+    {
+        return this.node.getPosition();
+    }
+
+    public getTopPos():cc.Vec2
+    {
+        return cc.v2(0,this.modeSize.y/2)
+    }
+
+    public getBottomPos():cc.Vec2
+    {
+        return cc.v2(0,-this.modeSize.y/2)
+    }
+
+    public getRightPos():cc.Vec2
+    {
+        return cc.v2(this.modeSize.x/2,this.modeSize.y/2)
+    }
+
+    public getLeftPos():cc.Vec2
+    {
+        return cc.v2(-this.modeSize.x/2,this.modeSize.y/2)
+    }
 
     public destroy(): boolean {
         if (this.skeleton) {
@@ -197,6 +217,8 @@ export default class Entity implements IEntity {
             this.model = null;
         }
         this.vo = null;
+        this.node.removeAllChildren();
+        this.node = null;
         return true;
     }
 }

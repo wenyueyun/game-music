@@ -1,6 +1,6 @@
 {
   "ver": "2.2.0",
-  "uuid": "bfaef857-ec24-4b78-9c31-217c96e34d0f",
+  "uuid": "b009bd70-a82a-4887-8246-f45ea0cd801b",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -8,8 +8,8 @@
   "subMetas": {
     "enemy_a_Zombie_01": {
       "ver": "1.0.3",
-      "uuid": "2642ab1b-ba1d-47f2-a411-dc34d45a63ba",
-      "rawTextureUuid": "bfaef857-ec24-4b78-9c31-217c96e34d0f",
+      "uuid": "a6efbc41-5d32-4d75-aadb-5aa96beadf2d",
+      "rawTextureUuid": "b009bd70-a82a-4887-8246-f45ea0cd801b",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
@@ -17,10 +17,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 241,
-      "height": 267,
-      "rawWidth": 241,
-      "rawHeight": 267,
+      "width": 335,
+      "height": 141,
+      "rawWidth": 335,
+      "rawHeight": 141,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

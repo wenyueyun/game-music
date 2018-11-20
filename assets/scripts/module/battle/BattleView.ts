@@ -11,13 +11,7 @@ export default class BattleView extends BaseView {
 
     laneDown: cc.Node = null;
 
-    noteItem: cc.Node = null;
-
     pauseBtn: cc.Button = null;
-
-    timeLabel: cc.Label = null;
-
-    scoreLabel: cc.Label = null;
 
     upVec: cc.Vec2 = null;
 
@@ -26,6 +20,13 @@ export default class BattleView extends BaseView {
     touchLeft: cc.Node = null;
 
     touchRight: cc.Node = null;
+
+    //user
+    userIcon:cc.Sprite = null;
+    userName:cc.Label = null;
+    progress:cc.ProgressBar = null;
+    timeLabel: cc.Label = null;
+    scoreLabel: cc.Label = null;
     
     //fail
     fail:cc.Node = null;
@@ -69,19 +70,22 @@ export default class BattleView extends BaseView {
         this.touchRight.on(cc.Node.EventType.TOUCH_START, this.onTouchRightStart, this);
         this.touchRight.on(cc.Node.EventType.TOUCH_END, this.onTouchRightEnd, this);
 
-        this.timeLabel = cc.find("TimeLabel", this.root).getComponent(cc.Label);
-        this.scoreLabel = cc.find("ScoreLabel", this.root).getComponent(cc.Label);
 
         this.laneUp = cc.find("Play/LaneUp", this.root);
         this.laneDown = cc.find("Play/LaneDown", this.root);
-        this.noteItem = cc.find("Play/NoteItem", this.root);
-        this.noteItem.active = false;
 
         this.upVec = this.laneUp.position;
         this.downVec = this.laneDown.position;
 
-        //fail
+        //user
 
+        this.userIcon = cc.find("UserInfo/UserIcon",this.root).getComponent(cc.Sprite);
+        this.userName = cc.find("UserInfo/UserName",this.root).getComponent(cc.Label);
+        this.timeLabel = cc.find("UserInfo/TimeLabel", this.root).getComponent(cc.Label);
+        this.scoreLabel = cc.find("UserInfo/ScoreLabel", this.root).getComponent(cc.Label);
+        this.progress = cc.find("ProgressBar",this.root).getComponent(cc.ProgressBar);
+
+        //fail
         this.fail = cc.find("Fail",this.root);
 
         this.exitBtn = cc.find("Fail/ExitBtn",this.root).getComponent(cc.Button);
@@ -92,8 +96,6 @@ export default class BattleView extends BaseView {
 
         this.pauseBtn = cc.find("PauseBtn", this.root).getComponent(cc.Button);
         this.pauseBtn.node.on(cc.Node.EventType.TOUCH_END, this.onPause, this);
-
-        PoolManager.getInstance().createPool(PoolManager.NOTE_POOL, this.noteItem);
 
         cc.systemEvent.dispatchEvent(new cc.Event(BattleConst.BATTLE_VIEW_OPEN_SUCC, false));
     }
@@ -139,6 +141,22 @@ export default class BattleView extends BaseView {
         this.timeLabel.string = Math.floor(time * 1000).toString();
     }
 
+    public setUserInfo(name:string,url:string):void
+    {
+        this.userName.string = name;
+        cc.loader.load({
+            url: url,
+            type: 'png'
+        }, (err, texture) => {
+            if (err) console.error(err);
+            this.userIcon.spriteFrame = new cc.SpriteFrame(texture);
+        });
+    } 
+    
+    public setHp(value:number):void
+    {
+        this.progress.progress = value;
+    }
 
     private onTouchLeftStart(): void {
         cc.systemEvent.dispatchEvent(new cc.Event(BattleConst.BATTLE_VIEW_TOUCH_LEFT_START, false));

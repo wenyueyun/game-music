@@ -20,7 +20,7 @@ body
   index: -1
 ears_1
   rotate: false
-  xy: 93, 192
+  xy: 93, 186
   size: 49, 73
   orig: 49, 73
   offset: 0, 0
@@ -34,45 +34,45 @@ ears_2
   index: -1
 eb
   rotate: true
-  xy: 142, 213
+  xy: 142, 198
   size: 63, 11
   orig: 63, 11
   offset: 0, 0
   index: -1
 eye
   rotate: true
-  xy: 129, 87
+  xy: 97, 82
   size: 71, 26
   orig: 71, 26
   offset: 0, 0
   index: -1
 foo12 xia
-  rotate: true
-  xy: 93, 158
-  size: 34, 63
+  rotate: false
+  xy: 124, 261
+  size: 34, 60
   orig: 34, 63
   offset: 0, 0
   index: -1
 foot1 xia
   rotate: false
-  xy: 97, 93
-  size: 32, 65
+  xy: 92, 259
+  size: 32, 62
   orig: 32, 65
   offset: 0, 0
   index: -1
 foot_1
-  rotate: true
-  xy: 97, 53
-  size: 34, 54
+  rotate: false
+  xy: 123, 99
+  size: 30, 54
   orig: 34, 54
-  offset: 0, 0
+  offset: 4, 0
   index: -1
 foot_2_1
-  rotate: false
-  xy: 92, 265
-  size: 45, 56
+  rotate: true
+  xy: 93, 153
+  size: 33, 54
   orig: 45, 56
-  offset: 0, 0
+  offset: 0, 2
   index: -1
 hair_1
   rotate: true
@@ -82,8 +82,8 @@ hair_1
   offset: 0, 0
   index: -1
 hair_2
-  rotate: false
-  xy: 137, 276
+  rotate: true
+  xy: 97, 59
   size: 23, 45
   orig: 23, 45
   offset: 0, 0
@@ -110,8 +110,8 @@ hand_2_1
   offset: 0, 0
   index: -1
 hand_2_2
-  rotate: false
-  xy: 101, 18
+  rotate: true
+  xy: 101, 13
   size: 46, 35
   orig: 46, 35
   offset: 0, 0
@@ -124,8 +124,8 @@ head
   offset: 0, 0
   index: -1
 mouth
-  rotate: true
-  xy: 147, 32
+  rotate: false
+  xy: 101, 0
   size: 21, 13
   orig: 21, 13
   offset: 0, 0

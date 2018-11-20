@@ -1,6 +1,6 @@
 {
   "ver": "2.2.0",
-  "uuid": "24e6d609-2f95-47ae-9f8b-2aa8a8d3a57e",
+  "uuid": "9d622f80-4e49-4c27-be81-e57c2e798b99",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -8,8 +8,8 @@
   "subMetas": {
     "enemy_a_hand_01": {
       "ver": "1.0.3",
-      "uuid": "cdf888b9-98b9-4ee9-874f-77dd835d8ae9",
-      "rawTextureUuid": "24e6d609-2f95-47ae-9f8b-2aa8a8d3a57e",
+      "uuid": "de2f5d1d-d35b-428a-8315-056d85fc924b",
+      "rawTextureUuid": "9d622f80-4e49-4c27-be81-e57c2e798b99",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,
@@ -17,10 +17,10 @@
       "offsetY": 0,
       "trimX": 0,
       "trimY": 0,
-      "width": 141,
-      "height": 148,
-      "rawWidth": 141,
-      "rawHeight": 148,
+      "width": 125,
+      "height": 46,
+      "rawWidth": 125,
+      "rawHeight": 46,
       "borderTop": 0,
       "borderBottom": 0,
       "borderLeft": 0,

@@ -58,11 +58,13 @@ export default class OverView extends BaseView {
     //点击重开按钮
     private onRestartClick():void
     {
+        cc.log("点击重开按钮");
         cc.systemEvent.dispatchEvent(new cc.Event(OverConst.OVER_VIEW_RESTART_CLICK, false));
     }
 
     // //点击关闭按钮
     private onExitClick(): void {
+        cc.log("点击关闭按钮");
         cc.systemEvent.dispatchEvent(new cc.Event(OverConst.OVER_VIEW_EXIT_CLICK, false));
     }
 

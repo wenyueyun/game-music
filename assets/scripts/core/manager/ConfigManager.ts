@@ -4,6 +4,7 @@ import MonsterConfig from "../config/MonsterConfig";
 import AudioConfig from "../config/AudioConfig";
 import SkillConfig from "../config/SkillConfig";
 import PlayerConfig from "../config/PlayerConfig";
+import GradeConfig from "../config/GradeConfig";
 
 export default class ConfigManager {
     private static instance: ConfigManager = null;
@@ -19,6 +20,7 @@ export default class ConfigManager {
     private monsterArr: Array<MonsterConfig>;
     private skillArr: Array<SkillConfig>;
     private playerArr: Array<PlayerConfig>;
+    private gradeArr: Array<GradeConfig>;
 
 
     public constructor() {
@@ -27,6 +29,7 @@ export default class ConfigManager {
         this.monsterArr = new Array<MonsterConfig>();
         this.skillArr = new Array<SkillConfig>();
         this.playerArr = new Array<PlayerConfig>();
+        this.gradeArr = new Array<GradeConfig>();
     }
 
     public loadConfig(resource: any[]) {
@@ -53,8 +56,20 @@ export default class ConfigManager {
         else if (object.name.includes("Skill")) {
             this.readSkill(object.json);
         }
+        else if (object.name.includes("Grade")) {
+            this.readGrade(object.json);
+        }
         else if (object.name.includes("Audio")) {
             this.readMusic(object.json);
+        }
+    }
+
+    //读取攻击区间配置
+    private readGrade(json: any) {
+        var grades = json.Grade;
+        for (let index = 0; index < grades.length; index++) {
+            const element = grades[index];
+            this.gradeArr.push(new GradeConfig(element));
         }
     }
 
@@ -152,5 +167,26 @@ export default class ConfigManager {
             }
         }
         return null;
+    }
+
+    public getGrade(dis: number): number {
+        var grade: GradeConfig = null;
+        for (let index = 0; index < this.gradeArr.length; index++) {
+            const element = this.gradeArr[index];
+            if (element.dis >= dis) {
+                if (grade == null) {
+                    grade = element;
+                }
+                else if (grade.dis > element.dis) {
+                    grade = element;
+                }
+            }
+        }
+
+        if(grade != null)
+        {
+            return grade.score;
+        }
+        return 0;
     }
 }

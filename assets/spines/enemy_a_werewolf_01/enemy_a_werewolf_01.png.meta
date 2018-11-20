@@ -1,6 +1,6 @@
 {
   "ver": "2.2.0",
-  "uuid": "d0ced269-9d61-4e2c-b1b0-dae7597dc314",
+  "uuid": "ce6d58ec-64df-418b-81c9-7ea35c6ced62",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -8,8 +8,8 @@
   "subMetas": {
     "enemy_a_werewolf_01": {
       "ver": "1.0.3",
-      "uuid": "90d311df-c5f4-4a60-9817-bd214e99f31a",
-      "rawTextureUuid": "d0ced269-9d61-4e2c-b1b0-dae7597dc314",
+      "uuid": "ea0773e4-58ac-4010-ae94-c7819a22d8a5",
+      "rawTextureUuid": "ce6d58ec-64df-418b-81c9-7ea35c6ced62",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

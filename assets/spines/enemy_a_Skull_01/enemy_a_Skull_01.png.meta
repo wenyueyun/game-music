@@ -1,6 +1,6 @@
 {
   "ver": "2.2.0",
-  "uuid": "803fba12-4085-4231-9b60-63c55eecf70c",
+  "uuid": "4a2fd948-dafb-49b7-8072-daa4bd0e8f77",
   "type": "sprite",
   "wrapMode": "clamp",
   "filterMode": "bilinear",
@@ -8,8 +8,8 @@
   "subMetas": {
     "enemy_a_Skull_01": {
       "ver": "1.0.3",
-      "uuid": "ea1d90cb-2074-4671-935a-703f56d27d9f",
-      "rawTextureUuid": "803fba12-4085-4231-9b60-63c55eecf70c",
+      "uuid": "c5e3d048-3c0b-49fe-83bc-5b09002d9f66",
+      "rawTextureUuid": "4a2fd948-dafb-49b7-8072-daa4bd0e8f77",
       "trimType": "auto",
       "trimThreshold": 1,
       "rotated": false,

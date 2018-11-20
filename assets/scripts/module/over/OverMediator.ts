@@ -3,7 +3,6 @@ import IMediator from "../../mvc/interfaces/IMediator";
 import OverConst from "./OverConst";
 import OverView from "./OverView";
 import INotification from "../../mvc/interfaces/INotification";
-import LevelConst from "../level/LevelConst";
 import BattleConst from "../battle/BattleConst";
 
 export default class OverMediator extends Mediator implements IMediator {
@@ -16,7 +15,6 @@ export default class OverMediator extends Mediator implements IMediator {
         ];
     }
 
-    private isOpen: boolean;
 
     public constructor(viewComponent: any) {
         super(OverMediator.NAME, viewComponent);
@@ -64,12 +62,14 @@ export default class OverMediator extends Mediator implements IMediator {
     //点击重开按钮
     private onRestart():void
     {
+        cc.log("-----点击重新开始");
         this.sendNotification(OverConst.OVER_MEDIATOR_CLOSE);
         this.sendNotification(BattleConst.BATTLE_MEDIATOR_RESTART);
     }
 
     //点击退出按钮
     private onExit(): void {
+        cc.log("-----点击退出");
         this.sendNotification(OverConst.OVER_MEDIATOR_CLOSE);
         this.sendNotification(BattleConst.BATTLE_MEDIATOR_EXIT);
     }

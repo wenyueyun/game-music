@@ -1,6 +1,6 @@
 export default class NoteConfig
 {
-    public type:string;
+    public track:string;
 
     public val:string;
 

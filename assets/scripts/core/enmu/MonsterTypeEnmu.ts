@@ -1,6 +1,7 @@
 declare enum MonsterTypeEnmu
 {
     Normal = 1,
-    Noodle = 2,
-    Double = 3,
+    Double = 2,
+    Noodle = 3,
+
 }

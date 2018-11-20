@@ -1,0 +1,65 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "Atk03Animation",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.25,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "160af55c-9b53-4c3a-b171-5ec5aa707c92"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "4c870fda-18cb-41a5-83cf-3c22b2a0910f"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "0dab677e-064d-484e-85cc-329e3d562f08"
+            }
+          },
+          {
+            "frame": 0.15,
+            "value": {
+              "__uuid__": "4670f9aa-b873-41ef-9dc0-49258396bae3"
+            }
+          }
+        ]
+      }
+    },
+    "props": {
+      "opacity": [
+        {
+          "frame": 0,
+          "value": 255
+        },
+        {
+          "frame": 0.2,
+          "value": 255
+        },
+        {
+          "frame": 0.25,
+          "value": 0
+        }
+      ]
+    }
+  },
+  "events": [
+    {
+      "frame": 0.25,
+      "func": "playOver",
+      "params": []
+    }
+  ]
+}

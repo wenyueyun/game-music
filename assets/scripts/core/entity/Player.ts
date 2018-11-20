@@ -1,7 +1,7 @@
 import Entity from "./Entity";
 import PlayerVO from "./PlayerVO";
-import EntityVO from "./EntityVO";
 import PlayerState from "../const/PlayerState";
+import ZindexConst from "../const/ZindexConst";
 
 export default class Player extends Entity {
     public constructor() {
@@ -16,17 +16,15 @@ export default class Player extends Entity {
     {
         this.model = cc.instantiate(prefab);
         if (this.model != null) {
-
             this.setSkeleton(this.model.getComponent(sp.Skeleton));
-
             this.node.addChild(this.model);
-            this.model.setPosition(cc.v2(0, -this.modeSize.y / 2 * this.model.scale));
-
+            this.model.setPosition(cc.Vec2.ZERO);
             this.run();
         }
     }
 
-    protected skeletonEvent(trackEntry: any, event: any) {
+    protected skeletonComplete(trackEntry: any, loopCount: number) {
+        super.skeletonComplete(trackEntry,loopCount)
         var animationName = trackEntry.animation ? trackEntry.animation.name : "";
         if (animationName == PlayerState.ATK) {
             this.run();
@@ -43,6 +41,11 @@ export default class Player extends Entity {
 
     public idle(): void {
         this.skeleton.setAnimation(0, PlayerState.IDLE, true);
+    }
+
+    public setParent(value: cc.Node)
+    {
+        super.setParent(value,ZindexConst.ZINDEX_PLAYER);
     }
 
     public destroy(): boolean {

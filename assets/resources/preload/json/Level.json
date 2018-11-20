@@ -4,7 +4,7 @@
       "id": "1",
       "name": "第一幕",
       "map": "Map_01",
-      "music": "Audio_007"
+      "music": "Audio_001"
     },
     {
       "id": "2",
@@ -16,7 +16,7 @@
       "id": "3",
       "name": "第三幕",
       "map": "Map_01",
-      "music": "Audio_004"
+      "music": "Audio_003"
     }
   ]
 }

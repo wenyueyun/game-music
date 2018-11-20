@@ -6,8 +6,6 @@ export default class MonsterConfig
 
     public name:string;
 
-    public hit:number;
-
     public skill:string;
 
     public model:string;
@@ -17,7 +15,6 @@ export default class MonsterConfig
         this.id = <number> element.id;
         this.type = <number>element.type;
         this.name = element.name;
-        this.hit = <number>element.hit;
         this.skill = element.skill;
         this.model = element.model;
     }

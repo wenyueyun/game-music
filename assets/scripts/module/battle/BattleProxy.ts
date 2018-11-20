@@ -11,7 +11,12 @@ export default class BattleProxy extends Proxy implements IProxy {
         super(BattleProxy.NAME);
     }
 
-    public getData(): any {
-        return null;
+    public getData(): BattleVO {
+        return this.vo;
+    }
+
+    public initVo()
+    {
+        this.vo = new BattleVO();
     }
 }

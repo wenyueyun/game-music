@@ -1,69 +1,69 @@
 
 enemy_a_hand_01.png
-size: 141,148
+size: 125,46
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 _0
-  rotate: true
-  xy: 71, 45
-  size: 103, 35
-  orig: 103, 35
+  rotate: false
+  xy: 59, 28
+  size: 52, 18
+  orig: 52, 18
   offset: 0, 0
   index: -1
 _1
   rotate: true
-  xy: 0, 0
-  size: 31, 28
-  orig: 31, 28
+  xy: 111, 31
+  size: 15, 14
+  orig: 15, 14
   offset: 0, 0
   index: -1
 _2
-  rotate: true
-  xy: 28, 4
-  size: 27, 36
-  orig: 27, 36
+  rotate: false
+  xy: 96, 10
+  size: 13, 18
+  orig: 13, 18
   offset: 0, 0
   index: -1
 _3
-  rotate: false
-  xy: 71, 21
-  size: 30, 24
-  orig: 30, 24
+  rotate: true
+  xy: 109, 13
+  size: 15, 12
+  orig: 15, 12
   offset: 0, 0
   index: -1
 _4
   rotate: true
-  xy: 106, 50
-  size: 24, 33
-  orig: 24, 33
+  xy: 77, 0
+  size: 12, 17
+  orig: 12, 17
   offset: 0, 0
   index: -1
 _5
-  rotate: false
-  xy: 106, 110
-  size: 33, 38
-  orig: 33, 38
+  rotate: true
+  xy: 77, 12
+  size: 16, 19
+  orig: 16, 19
   offset: 0, 0
   index: -1
 _6
   rotate: false
-  xy: 106, 74
-  size: 35, 36
-  orig: 35, 36
+  xy: 59, 10
+  size: 18, 18
+  orig: 18, 18
   offset: 0, 0
   index: -1
 _7
-  rotate: true
-  xy: 106, 25
-  size: 25, 26
-  orig: 25, 26
+  rotate: false
+  xy: 109, 0
+  size: 12, 13
+  orig: 12, 13
   offset: 0, 0
   index: -1
 _8
-  rotate: false
-  xy: 0, 31
-  size: 71, 117
-  orig: 71, 117
+  rotate: true
+  xy: 0, 10
+  size: 36, 59
+  orig: 36, 59
   offset: 0, 0
   index: -1

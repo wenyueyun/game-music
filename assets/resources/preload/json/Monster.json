@@ -1,50 +1,44 @@
 {
   "Monster": [
     {
-      "id": "1001",
+      "id": "2000",
       "name": "僵尸新娘",
       "type": "1",
-      "hit": "1",
-      "skill": "10001",
+      "skill": "10002",
       "model": "Boss_01"
     },
     {
       "id": "2001",
       "name": "蝙蝠",
       "type": "1",
-      "hit": "1",
-      "skill": "10003",
+      "skill": "10005",
       "model": "Bat_01"
     },
     {
       "id": "2002",
       "name": "幽灵",
       "type": "1",
-      "hit": "1",
-      "skill": "10001",
+      "skill": "10002",
       "model": "Ghost_01"
     },
     {
       "id": "2003",
       "name": "魔手",
       "type": "1",
-      "hit": "1",
-      "skill": "10001",
+      "skill": "10002",
       "model": "Hand_01"
     },
     {
       "id": "2004",
       "name": "骷髅",
       "type": "1",
-      "hit": "1",
-      "skill": "10004",
+      "skill": "10002",
       "model": "Skull_01"
     },
     {
       "id": "2005",
       "name": "狼人",
       "type": "1",
-      "hit": "1",
       "skill": "10001",
       "model": "Werewolf_01"
     },
@@ -52,24 +46,21 @@
       "id": "2006",
       "name": "僵尸",
       "type": "1",
-      "hit": "1",
-      "skill": "10001",
+      "skill": "10002",
       "model": "Zombie_01"
     },
     {
       "id": "2007",
-      "name": "双子怪（组合怪）",
+      "name": "双子怪(组合怪)",
       "type": "2",
-      "hit": "2",
-      "skill": "10007",
+      "skill": "10003",
       "model": "Ghost_01"
     },
     {
       "id": "2008",
-      "name": "面条怪（组合怪）",
+      "name": "面条怪(组合怪)",
       "type": "3",
-      "hit": "3",
-      "skill": "10004",
+      "skill": "10006",
       "model": "Ghost_01"
     }
   ]

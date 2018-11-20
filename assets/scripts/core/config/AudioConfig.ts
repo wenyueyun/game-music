@@ -31,8 +31,13 @@ export default class AudioConfig
             for (let j = 0; j < notes.length; j++) {
                 let noteJson = notes[j];
                 let note: NoteConfig = new NoteConfig();
-                note.type = noteJson.Type;
-                note.val = noteJson.Val;
+                let val:string = noteJson.Val;
+                let temps:string[] = val.split("#");
+                if(temps.length >=2)
+                {
+                    note.track = temps[0];
+                    note.val = temps[1];
+                }
                 note.startTime = noteJson.StartTime;
                 note.endTime = noteJson.EndTime;
                 track.addNote(note);

@@ -4,7 +4,7 @@ export default class MonsterState
     public static IDLE:string = "idle";
 
     //跑步
-    public static RUN:string = "run_01";
+    public static RUN:string = "run";
 
     //攻击
     public static ATK:string = "atk";

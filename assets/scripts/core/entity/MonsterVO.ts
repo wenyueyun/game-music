@@ -18,4 +18,9 @@ export default class MonsterVO extends EntityVO
     {
         return PathConst.MONSTER + this.config.model;
     }
+
+    public getType():number
+    {
+        return this.config.type;
+    }
 }

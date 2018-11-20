@@ -1,131 +1,131 @@
 
 enemy_a_Zombie_01.png
-size: 241,267
+size: 335,141
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 jiangshixinniang_0
   rotate: false
-  xy: 177, 1
+  xy: 309, 118
   size: 26, 23
   orig: 26, 23
   offset: 0, 0
   index: -1
 jiangshixinniang_1
-  rotate: true
-  xy: 216, 95
-  size: 45, 25
+  rotate: false
+  xy: 286, 29
+  size: 39, 24
   orig: 45, 25
   offset: 0, 0
   index: -1
 jiangshixinniang_10
   rotate: false
-  xy: 152, 154
+  xy: 0, 3
   size: 67, 36
   orig: 67, 36
   offset: 0, 0
   index: -1
 jiangshixinniang_11
   rotate: true
-  xy: 154, 24
+  xy: 67, 9
   size: 30, 40
   orig: 30, 40
   offset: 0, 0
   index: -1
 jiangshixinniang_12
-  rotate: true
-  xy: 107, 19
-  size: 33, 47
+  rotate: false
+  xy: 233, 28
+  size: 32, 47
   orig: 33, 47
   offset: 0, 0
   index: -1
 jiangshixinniang_13
-  rotate: false
-  xy: 107, 52
+  rotate: true
+  xy: 238, 103
   size: 38, 71
   orig: 38, 71
   offset: 0, 0
   index: -1
 jiangshixinniang_14
-  rotate: true
-  xy: 154, 0
+  rotate: false
+  xy: 301, 6
   size: 24, 23
   orig: 24, 23
   offset: 0, 0
   index: -1
 jiangshixinniang_15
   rotate: false
-  xy: 0, 5
-  size: 27, 16
+  xy: 309, 102
+  size: 26, 16
   orig: 27, 16
-  offset: 0, 0
+  offset: 1, 0
   index: -1
 jiangshixinniang_16
-  rotate: false
-  xy: 194, 31
-  size: 47, 23
+  rotate: true
+  xy: 265, 29
+  size: 46, 21
   orig: 47, 23
-  offset: 0, 0
+  offset: 1, 1
   index: -1
 jiangshixinniang_17
   rotate: true
-  xy: 196, 54
+  xy: 233, 0
   size: 28, 40
   orig: 28, 40
   offset: 0, 0
   index: -1
 jiangshixinniang_18
   rotate: true
-  xy: 145, 54
+  xy: 238, 75
   size: 28, 51
   orig: 28, 51
   offset: 0, 0
   index: -1
 jiangshixinniang_2
   rotate: false
-  xy: 203, 1
-  size: 28, 30
+  xy: 273, 0
+  size: 28, 29
   orig: 28, 30
   offset: 0, 0
   index: -1
 jiangshixinniang_20
   rotate: false
-  xy: 0, 123
-  size: 152, 144
+  xy: 107, 77
+  size: 131, 64
   orig: 152, 144
-  offset: 0, 0
+  offset: 7, 73
   index: -1
 jiangshixinniang_3
-  rotate: true
-  xy: 219, 140
-  size: 50, 22
+  rotate: false
+  xy: 286, 53
+  size: 49, 22
   orig: 50, 22
   offset: 0, 0
   index: -1
 jiangshixinniang_6
-  rotate: false
-  xy: 152, 120
-  size: 64, 34
+  rotate: true
+  xy: 222, 13
+  size: 64, 11
   orig: 64, 34
-  offset: 0, 0
+  offset: 0, 22
   index: -1
 jiangshixinniang_7
-  rotate: false
-  xy: 145, 82
-  size: 64, 38
+  rotate: true
+  xy: 193, 20
+  size: 57, 29
   orig: 64, 38
-  offset: 0, 0
+  offset: 5, 8
   index: -1
 jiangshixinniang_8
   rotate: false
-  xy: 152, 190
+  xy: 107, 0
   size: 86, 77
   orig: 86, 77
   offset: 0, 0
   index: -1
 jiangshixinniang_9
   rotate: false
-  xy: 0, 21
+  xy: 0, 39
   size: 107, 102
   orig: 107, 102
   offset: 0, 0

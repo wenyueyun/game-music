@@ -1,23 +1,23 @@
 export default class PlayerState
 {
     //待机
-    public static IDLE:string = "idle_01";
+    public static IDLE:string = "idle";
 
     //跑步
-    public static RUN:string = "run_01";
+    public static RUN:string = "run";
 
     //攻击
-    public static ATK:string = "atk_01";
+    public static ATK:string = "atk";
 
     //受击
-    public static HIT:string = "hit_01";
+    public static HIT:string = "hit";
 
     //技能
-    public static SKILL:string = "skill_01";
+    public static SKILL:string = "skill";
 
     //停留
-    public static STAY:string = "stay_01";
+    public static STAY:string = "stay";
 
     //死亡
-    public static DIE:string = "die_01";
+    public static DIE:string = "die";
 }

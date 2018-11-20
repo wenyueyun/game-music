@@ -13,4 +13,6 @@ export default class PathConst
     public static AUDIO:string = "audio/";
 
     public static TEXTURE:string = "texture/";
+    
+    public static EFFECT:string = "effect/";
 }
